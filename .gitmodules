@@ -1,0 +1,3 @@
+[submodule "volttron-GS"]
+	path = volttron-GS
+	url = https://github.com/VOLTTRON/volttron-GS

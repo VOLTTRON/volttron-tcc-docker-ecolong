@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+python scripts/install-agent.py \
+    -s transactivecontrol/MarketAgents/UnControlLoadAgent \
+    --config config/config/smalloffice/uncontrol_load.config \
+    --tag uncontrol_load \
+    -i platform.uncontrol_load \
+    --force \
+    --start

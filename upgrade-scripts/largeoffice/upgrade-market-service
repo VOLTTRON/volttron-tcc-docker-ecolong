@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+python ./scripts/install-agent.py \
+    -s transactivecontrol/MixMarketServiceAgent \
+    -i platform.market \
+    --config transactivecontrol/MixMarketServiceAgent/config \
+    --tag market-service \
+    --start \
+    --force
+

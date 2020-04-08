@@ -1,0 +1,12 @@
+#!/bin/bash
+. env/bin/activate
+volttron -vv -l volttron.log > /dev/null 2>&1&
+sleep 5
+. upgrade-scripts/campus_city/upgrade-sqlite-historian
+. upgrade-scripts/campus_city/upgrade-lo-forwarder
+. upgrade-scripts/campus_city/upgrade-b1-forwarder
+. upgrade-scripts/campus_city/upgrade-so-forwarder
+. upgrade-scripts/campus_city/upgrade-brsw-forwarder
+. upgrade-scripts/campus_city/upgrade-tns-campus
+. upgrade-scripts/campus_city/upgrade-tns-city
+. upgrade-scripts/upgrade_listener

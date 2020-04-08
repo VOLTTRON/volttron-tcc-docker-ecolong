@@ -1,0 +1,15 @@
+
+#!/usr/bin/env bash
+
+# Build a temp file string for use with the configuration
+
+python scripts/install-agent.py \
+    -s transactivecontrol/MarketAgents/UnControlLoadAgent \
+    --config config/config/building1/uncontrol_load.config\
+    --tag uncontrol_load \
+    -i platform.uncontrol_load \
+    --force \
+    --start
+
+
+

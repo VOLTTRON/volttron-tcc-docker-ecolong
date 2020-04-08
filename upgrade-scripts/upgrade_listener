@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Build a temp file string for use with the configuration
+python ./scripts/install-agent.py \
+    -s examples/ListenerAgent \
+    -i platform.listener \
+    --tag listener \
+    --config examples/ListenerAgent/config \
+    --start \
+    --force

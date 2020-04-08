@@ -1,0 +1,12 @@
+#!/bin/bash
+. env/bin/activate
+volttron -vv -l volttron.log > /dev/null 2>&1&
+sleep 5
+. upgrade-scripts/brsw/upgrade-sqlite-historian
+. upgrade-scripts/brsw/upgrade-rtu
+. upgrade-scripts/brsw/upgrade-uncontrol-agent
+. upgrade-scripts/brsw/upgrade-market-service
+. upgrade-scripts/brsw/upgrade-building-agent
+. upgrade-scripts/brsw/upgrade-energyplus
+. upgrade-scripts/brsw/upgrade-pnnl-forwarder
+. upgrade-scripts/upgrade_listener

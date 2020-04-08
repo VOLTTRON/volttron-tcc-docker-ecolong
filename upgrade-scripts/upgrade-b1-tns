@@ -1,0 +1,27 @@
+#!/bin/bash
+
+. env/bin/activate
+pip install decorators
+pip install pandas
+pip install scipy patsy
+
+volttron -vv -l volttron.log > /dev/null 2>&1&
+sleep 15
+. upgrade-scripts/building1/upgrade-sqlite-historian
+sleep 2
+. upgrade-scripts/building1/upgrade-regression
+. upgrade-scripts/building1/upgrade-ahu1-vav
+. upgrade-scripts/building1/upgrade-ahu2-vav
+. upgrade-scripts/building1/upgrade-ahu3-vav
+. upgrade-scripts/building1/upgrade-ahu4-vav
+. upgrade-scripts/building1/upgrade-ahu1
+. upgrade-scripts/building1/upgrade-ahu2
+. upgrade-scripts/building1/upgrade-ahu3
+. upgrade-scripts/building1/upgrade-ahu4
+. upgrade-scripts/building1/upgrade-light
+. upgrade-scripts/building1/upgrade-uncontrol-agent
+. upgrade-scripts/building1/upgrade-market-service
+. upgrade-scripts/building1/upgrade-building-agent
+. upgrade-scripts/building1/upgrade-energyplus
+. upgrade-scripts/building1/upgrade-pnnl-forwarder
+. upgrade-scripts/upgrade_listener

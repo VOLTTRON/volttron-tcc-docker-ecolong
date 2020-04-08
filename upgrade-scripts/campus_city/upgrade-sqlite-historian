@@ -1,0 +1,9 @@
+
+python scripts/install-agent.py \
+    -i platform.historian \
+    -s services/core/SQLHistorian \
+    -c config/config/campus_city/config.sqlite \
+    --tag sqlite-db \
+    --start \
+    --force
+

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+python ./scripts/install-agent.py \
+    -s transactivecontrol/MarketAgents/AHUAgent \
+    -i platform.ahu1 \
+    --config config/config/largeoffice/AHU1.config \
+    --tag ahu \
+    --start \
+    --force

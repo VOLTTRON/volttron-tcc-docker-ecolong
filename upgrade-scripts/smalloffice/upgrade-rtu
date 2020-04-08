@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# Build a temp file string for use with the configuration
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu1 \
+     --config config/config/smalloffice/rtu1.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu2 \
+     --config config/config/smalloffice/rtu2.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu3 \
+     --config config/config/smalloffice/rtu3.config \
+     --tag rtu \
+     --start \
+     --force
+     
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu4 \
+     --config config/config/smalloffice/rtu4.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu5 \
+     --config config/config/smalloffice/rtu5.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu6 \
+     --config config/config/smalloffice/rtu6.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu7 \
+     --config config/config/smalloffice/rtu7.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu8 \
+     --config config/config/smalloffice/rtu8.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu9 \
+     --config config/config/smalloffice/rtu9.config \
+     --tag rtu \
+     --start \
+     --force
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/RTUAgent \
+     -i platform.rtu10 \
+     --config config/config/smalloffice/rtu10.config \
+     --tag rtu \
+     --start \
+     --force
