@@ -80,7 +80,7 @@ SizingPeriod:DesignDay,
 
 ! Pasco Annual Cooling Design Conditions Wind Speed=3.1m/s Wind Dir=330
 ! Hottest Month=JUL
-! Pasco WA USA Annual Cooling (DB=>MWB) .4%, MaxDB=37.5°C MWB=21.1°C
+! Pasco WA USA Annual Cooling (DB=>MWB) .4%, MaxDB=37.5ï¿½C MWB=21.1ï¿½C
 SizingPeriod:DesignDay,
     Pasco Ann Clg .4% Condns DB=>MWB,  !- Name
     7,                       !- Month
