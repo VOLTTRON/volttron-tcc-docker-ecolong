@@ -1,6 +1,6 @@
 #!/bin/bash
 . env/bin/activate
-pip install pandas
+pip install pandas sympy transitions
 
 volttron -vv -l volttron.log > /dev/null 2>&1&
 sleep 5
