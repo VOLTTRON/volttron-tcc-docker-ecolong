@@ -1,7 +1,7 @@
 # VOLTTRON-tcc-docker
 Repository containing the setup for TCC market agents
 
-# options for building building1, smalloffice, largeoffice, campus_city
+# options for building building1, smalloffice, largeoffice, brsw, campus_city
 make build building={building}
 
 make run building={building}

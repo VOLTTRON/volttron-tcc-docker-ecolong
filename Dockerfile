@@ -1,27 +1,13 @@
-FROM senhuang/volttron
-
+FROM rglutes/kier_transactive_campus:volttron_python3
 USER root
+RUN apt-get update --fix-missing && apt-get install locales
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
-RUN git checkout -f develop
-
-RUN git pull
-
-RUN rm -r /home/volttron/volttron/env
-
-
-ENV DEBIAN_FRONTEND=noninteractive 
-RUN apt-get update && apt-get install -y build-essential python3.6-dev python3.6-venv python3-venv python3-pip openssl libssl-dev libevent-dev tzdata apt-utils
-
-ENV TZ=US/Pacific
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ARG buildings
 
 USER volttron
-
-RUN python3 bootstrap.py --web
-
-RUN /bin/bash -c "source env/bin/activate"
-
-RUN pip3 install numpy jwt
 
 ARG buildings
 
@@ -31,10 +17,6 @@ USER root
 
 RUN rm -r /home/volttron/volttron/volttron/platform/agent/base_market_agent
 COPY volttron-GS/base_market_agent /home/volttron/volttron/volttron/platform/agent/base_market_agent
-
-RUN rm /home/volttron/volttron/volttron/platform/agent/base_historian.py
-COPY source/base_historian.py /home/volttron/volttron/volttron/platform/agent/base_historian.py
-
 
 COPY volttron-GS/TNSAgent /home/volttron/volttron/volttron/TNS_city_Agent
 
@@ -48,8 +30,6 @@ COPY volttron-GS/TNSAgent /home/volttron/volttron/volttron/TNS_building_Agent
 
 COPY source/buildingsetup.py /home/volttron/volttron/volttron/TNS_building_Agent/setup.py
 
-
-
 COPY volttron-GS/pnnl /home/volttron/volttron/volttron/pnnl
 
 RUN chown volttron.volttron /home/volttron/volttron/volttron/platform/agent -R
@@ -57,8 +37,6 @@ RUN chown volttron.volttron /home/volttron/volttron/volttron/platform/agent -R
 USER volttron
 
 RUN /bin/bash -c "source env/bin/activate"
-
-
 
 ENV VOLTTRON_HOME=~/.volttron_${buildings}
 
@@ -71,8 +49,6 @@ COPY transactivecontrol/MarketAgents/config/${buildings}/config /home/volttron/.
 COPY transactivecontrol/MarketAgents/config/${buildings}/auth.json /home/volttron/.volttron_${buildings}/
 
 COPY /source/eplus /home/volttron/volttron/eplus
-
-
 
 USER root
 
