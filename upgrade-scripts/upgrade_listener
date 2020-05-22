@@ -1,10 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# Build a temp file string for use with the configuration
+export CONFIG=$(mktemp /tmp/abc-script.XXXXXX)
+
+cat > $CONFIG <<EOL
+
+{
+ "heartbeat_period": 0
+}
+EOL
 
 # Build a temp file string for use with the configuration
 python ./scripts/install-agent.py \
     -s examples/ListenerAgent \
     -i platform.listener \
     --tag listener \
-    --config examples/ListenerAgent/config \
+    --config $CONFIG \
     --start \
     --force
+
+rm $CONFIG

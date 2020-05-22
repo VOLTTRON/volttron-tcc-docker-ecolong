@@ -3,7 +3,7 @@
 . env/bin/activate
 pip install decorators
 pip install pandas
-pip install scipy patsy transitions
+pip install scipy patsy transitions sympy
 
 volttron -vv -l volttron.log > /dev/null 2>&1&
 sleep 15

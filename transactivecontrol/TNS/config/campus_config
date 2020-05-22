@@ -4,9 +4,12 @@
 
   "market_cycle_in_min": 60,
   "market_reservation_in_hours": 1440,
-  "buildings": ["BUILDING1"], # The names here should match the names in building config files
+  "buildings": ["SMALL_OFFICE", "BUILDING1", "BRSW", "LargeOffice"],  # The names here should match the names in building config files
   "building_powers": {
-    #"SMALL_OFFICE": [0.0, -120.0, -45.0],
+    "LargeOffice": [0.0, -3500, -1000.0],
+    "SMALL_OFFICE": [0.0, -120.0, -45.0],
+    "BRSW": [0.0, -120.0, -45.0],
+    "SMALL_OFFICE_1": [0.0, -120.0, -45.0],
     "BUILDING1": [0.0, -120.0, -35.0]
   },
   "PV_max_kW": 120.0,
