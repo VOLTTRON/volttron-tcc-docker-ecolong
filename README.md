@@ -17,8 +17,9 @@ make run building={building}
 # This will take you to VOLTTRON ENVIRONMENT
 # For TNS/TCC you will need the city_campus and at least one building docker (in it's current configuration, you must run building1)
 
-# Start the docker building1 last as it triggers the building of the tns city agent, which inturn triggers the other paused simulations to proceed.  This will keep the E+ simulations  time in sync, if configured consistently.
+# Start the docker for building1 last as it triggers the building of the tns city agent, which inturn triggers the other paused simulations to proceed.  This will keep the E+ simulations  time in sync, if configured consistently.
 
-# docker-compose was added
+# docker-compose was added for tns to simplify.
 docker-compose build
+
 docker-compose up
