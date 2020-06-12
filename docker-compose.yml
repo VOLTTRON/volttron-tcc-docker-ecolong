@@ -1,0 +1,77 @@
+version: '3.1'
+
+services:
+  building1_alone:
+    network_mode: host
+    volumes:
+       - ./transactivecontrol/MarketAgents/:/home/volttron/volttron/config/
+       - ./log/:/home/volttron/volttron/log
+       - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+       - ./source/bcvtb:/home/volttron/volttron/bcvtb
+    build:
+      context: .
+      args:
+        buildings: building1
+    working_dir: /home/volttron/volttron/
+    command: bash upgrade-scripts/upgrade-b1-tns
+
+  smalloffice_alone:
+    network_mode: host
+    volumes:
+       - ./transactivecontrol/MarketAgents/:/home/volttron/volttron/config/
+       - ./log/:/home/volttron/volttron/log
+       - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+       - ./source/bcvtb:/home/volttron/volttron/bcvtb
+    build:
+      context: .
+      args:
+        buildings: smalloffice
+    working_dir: /home/volttron/volttron/
+    command: bash upgrade-scripts/upgrade-sm-tns
+
+  largeoffice_alone:
+    network_mode: host
+    volumes:
+       - ./transactivecontrol/MarketAgents/:/home/volttron/volttron/config/
+       - ./log/:/home/volttron/volttron/log
+       - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+       - ./source/bcvtb:/home/volttron/volttron/bcvtb
+    build:
+      context: .
+      args:
+        buildings: largeoffice
+    working_dir: /home/volttron/volttron/
+    command: bash upgrade-scripts/upgrade-lo-tns
+
+  brsw_alone:
+      network_mode: host
+      volumes:
+         - ./transactivecontrol/MarketAgents/:/home/volttron/volttron/config/
+         - ./log/:/home/volttron/volttron/log
+         - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+         - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+         - ./source/bcvtb:/home/volttron/volttron/bcvtb
+      build:
+        context: .
+        args:
+          buildings: brsw
+      working_dir: /home/volttron/volttron/
+      command: bash upgrade-scripts/upgrade-brsw-tns
+
+  central_alone:
+    network_mode: host
+    volumes:
+       - ./transactivecontrol/TNS/:/home/volttron/volttron/config/
+       - ./log/:/home/volttron/volttron/log
+       - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+       - ./source/bcvtb:/home/volttron/volttron/bcvtb
+    build:
+      context: .
+      args:
+        buildings: campus_city
+    working_dir: /home/volttron/volttron/
+    command: bash upgrade-scripts/upgrade-tns

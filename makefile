@@ -11,6 +11,7 @@ COMMAND_RUN=docker run \
 	  -v `pwd`/upgrade-scripts:/home/volttron/volttron/upgrade-scripts \
 	  -v `pwd`/volttron-GS:/home/volttron/volttron/transactivecontrol \
 	  -v `pwd`/source/bcvtb:/home/volttron/volttron/bcvtb \
+	  -v `pwd`/log:/home/volttron/volttron/log \
 	  -i \
           -t \
 	  ${IMG_NAME} /bin/bash -c

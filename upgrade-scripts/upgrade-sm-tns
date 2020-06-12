@@ -2,8 +2,8 @@
 . env/bin/activate
 pip install pandas sympy transitions
 
-volttron -vv -l volttron.log > /dev/null 2>&1&
-sleep 5
+volttron -vv -l /home/volttron/volttron/log/so.log > /dev/null 2>&1&
+sleep 10
 . upgrade-scripts/smalloffice/upgrade-sqlite-historian
 . upgrade-scripts/smalloffice/upgrade-rtu
 . upgrade-scripts/smalloffice/upgrade-light
@@ -13,3 +13,8 @@ sleep 5
 . upgrade-scripts/smalloffice/upgrade-energyplus
 . upgrade-scripts/smalloffice/upgrade-pnnl-forwarder
 . upgrade-scripts/upgrade_listener
+
+while : ;do
+    [[ -f "/home/volttron/volttron/log/so.log" ]] && grep -q "Simulation reached end" "/home/volttron/volttron/log/so.log" && echo "Done" && break
+    sleep 5
+done

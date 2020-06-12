@@ -1,11 +1,36 @@
 #!/usr/bin/env bash
 
+# Build a temp file string for use with the configuration
+export CONFIG=$(mktemp /tmp/abc-script.XXXXXX)
+
+cat > $CONFIG <<EOL
+
+{
+    "agentid": "sqlhistorian-sqlite",
+    "identity": "platform.historian",
+    "connection": {
+        "type": "sqlite",
+        "params": {
+            "database": "~/volttron/log/building1_tns.sqlite"
+        }
+    },
+    "capture_device_data": true,
+    "capture_analysis_data": false,
+    "capture_log_data": false,
+    "capture_record_data": false,
+    "custom_topics": {
+        "other_topic": ["tnc"]
+    }
+}
+EOL
+
 python scripts/install-agent.py \
     -i platform.historian \
     -s services/core/SQLHistorian \
-    -c config/config/building1/config.sqlite \
+    -c $CONFIG \
     --tag sqlite-db \
     --start \
     --force
 
+rm $CONFIG
 

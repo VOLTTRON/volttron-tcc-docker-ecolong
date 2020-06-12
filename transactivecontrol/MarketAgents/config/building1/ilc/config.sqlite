@@ -3,7 +3,7 @@
     "connection": {
         "type": "sqlite",
         "params": {
-            "database": "~/volttron/platform.historian.sqlite"
+            "database": "~/volttron/log/b1_ilc.sqlite"
         }
     },
     "capture_device_data": true,

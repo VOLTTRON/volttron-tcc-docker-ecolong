@@ -5,7 +5,7 @@ pip install decorators
 pip install pandas sympy transitions
 
 
-volttron -vv -l volttron.log > /dev/null 2>&1&
+volttron -vv -l /home/volttron/volttron/log/lo.log > /dev/null 2>&1&
 sleep 10
 
 . upgrade-scripts/largeoffice/upgrade-sqlite-historian
@@ -24,3 +24,8 @@ sleep 10
 . upgrade-scripts/largeoffice/upgrade-energyplus
 . upgrade-scripts/largeoffice/upgrade-pnnl-forwarder
 . upgrade-scripts/upgrade_listener
+
+while : ;do
+    [[ -f "/home/volttron/volttron/log/lo.log" ]] && grep -q "Simulation reached end" "/home/volttron/volttron/log/lo.log" && echo "Done" && break
+    sleep 5
+done

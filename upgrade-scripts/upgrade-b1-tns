@@ -5,7 +5,7 @@ pip install decorators
 pip install pandas
 pip install scipy patsy transitions sympy
 
-volttron -vv -l volttron.log > /dev/null 2>&1&
+volttron -vv -l /home/volttron/volttron/log/b1.log > /dev/null 2>&1&
 sleep 15
 . upgrade-scripts/building1/upgrade-sqlite-historian
 sleep 2
@@ -25,3 +25,8 @@ sleep 2
 . upgrade-scripts/building1/upgrade-energyplus
 . upgrade-scripts/building1/upgrade-pnnl-forwarder
 . upgrade-scripts/upgrade_listener
+
+while : ;do
+    [[ -f "/home/volttron/volttron/log/b1.log" ]] && grep -q "Simulation reached end" "/home/volttron/volttron/log/b1.log" && echo "Done" && break
+    sleep 5
+done
