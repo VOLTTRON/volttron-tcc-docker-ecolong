@@ -3,9 +3,9 @@
 # Build a temp file string for use with the configuration
 python ./scripts/install-agent.py \
     -s transactivecontrol/ILCAgent/ \
-    -i b1.ilc \
+    -i so.ilc \
     --tag ilc \
-    --config config/config/building1/ilc/b1_ilc.config \
+    --config config/config/smalloffice/ilc/so_ilc.config \
     --start \
     --force
 
