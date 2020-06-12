@@ -8,7 +8,7 @@ cat > $CONFIG <<EOL
     "connection": {
         "type": "sqlite",
         "params": {
-            "database": "~/volttron/historian.centralnode.sqlite"
+            "database": "~/volttron/log/tns.sqlite"
         }
     },
     "capture_device_data": false,
