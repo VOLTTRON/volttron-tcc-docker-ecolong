@@ -2,3 +2,8 @@
 	path = volttron-GS
 	url = https://github.com/VOLTTRON/volttron-GS
 	branch = master
+
+[submodule "volttron"]
+	path = volttron
+	url = https://github.com/volttron/volttron
+	branch = develop
