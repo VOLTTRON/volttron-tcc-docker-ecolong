@@ -207,13 +207,15 @@ if need_to_install:
 
         # grab the priority from the system config file
         priority = spec.get('priority', '50')
+        tag = spec.get('tag', 'some agent tag')
 
         install_cmd = ["python3", INSTALL_PATH]
         install_cmd.extend(["--agent-source", agent_source])
         install_cmd.extend(["--vip-identity", identity])
         install_cmd.extend(["--start", "--priority", priority])
-        install_cmd.extend(["--agent-start-time", "60"])
+        install_cmd.extend(["--agent-start-time", "20"])
         install_cmd.append('--force')
+        install_cmd.extend(["--tag", tag])
         if agent_cfg:
             install_cmd.extend(["--config", agent_cfg])
 

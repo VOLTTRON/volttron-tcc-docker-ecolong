@@ -19,6 +19,12 @@ agents:
   listener:
     source: $VOLTTRON_ROOT/examples/ListenerAgent
     config: $CONFIG/listener.config
+    tag: listener
+
+  tns.campus:
+    source: $VOLTTRON_ROOT/volttron/TNS_campus_Agent
+    config: $CONFIG/tns_campus.config
+    tag: tns_campus
 
 #  platform.driver:
 #    source: $VOLTTRON_ROOT/services/core/PlatformDriverAgent
