@@ -61,17 +61,30 @@ services:
       working_dir: /home/volttron/volttron/
       command: bash upgrade-scripts/upgrade-brsw-tns
 
-  central_alone:
-    network_mode: host
+  central:
+    image: volttron/volttron:tcc
+    container_name: central
+#    ports:
+#      # host_port:container_port
+#      # ssl port for web
+#      - 8441:8443
+#      # port for VIP-address
+#      - 22911:22916
+    environment:
+      - CONFIG=/home/volttron/configs
+      - LOCAL_USER_ID=1000
     volumes:
-       - ./transactivecontrol/TNS/:/home/volttron/volttron/config/
-       - ./log/:/home/volttron/volttron/log
-       - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
-       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
-       - ./source/bcvtb:/home/volttron/volttron/bcvtb
-    build:
-      context: .
-      args:
-        buildings: campus_city
-    working_dir: /home/volttron/volttron/
-    command: bash upgrade-scripts/upgrade-tns
+      - ./platform_configs/central:/home/volttron/configs
+      - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
+
+      - ./transactivecontrol/TNS/:/home/volttron/volttron/config/
+      - ./log/:/home/volttron/volttron/log
+      - ./upgrade-scripts:/home/volttron/volttron/upgrade-scripts
+      - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
+      - ./source/bcvtb:/home/volttron/volttron/bcvtb
+#    build:
+#      context: .
+#      args:
+#        buildings: campus_city
+#    working_dir: /home/volttron/volttron/
+#    command: bash upgrade-scripts/upgrade-tns
