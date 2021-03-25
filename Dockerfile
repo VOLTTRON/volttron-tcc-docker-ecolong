@@ -98,9 +98,15 @@ FROM volttron_core AS volttron_tcc
 ARG BUILDINGS
 
 USER $VOLTTRON_USER
+RUN pip3 install pandas sympy transitions scipy patsy decorators
 
-COPY --chown=volttron:volttron volttron-GS/base_market_agent /code/volttron/volttron/platform/agent/base_market_agent
 COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl
+COPY --chown=volttron:volttron volttron-GS/eplus /code/volttron/volttron/pnnl
+COPY --chown=volttron:volttron source/eplus /code/volttron/volttron/eplus
+
+COPY --chown=volttron:volttron volttron-GS/MarketAgents /code/volttron/volttron/MarketAgents
+COPY --chown=volttron:volttron volttron-GS/MixMarketServiceAgent /code/volttron/volttron/MixMarketServiceAgent
+COPY --chown=volttron:volttron volttron-GS/base_market_agent /code/volttron/volttron/platform/agent/base_market_agent
 
 COPY --chown=volttron:volttron volttron-GS/TNSAgent /code/volttron/volttron/TNS_city_Agent
 COPY --chown=volttron:volttron source/citysetup.py /code/volttron/volttron/TNS_city_Agent/setup.py
@@ -111,7 +117,6 @@ COPY --chown=volttron:volttron source/campussetup.py /code/volttron/volttron/TNS
 COPY --chown=volttron:volttron volttron-GS/TNSAgent /code/volttron/volttron/TNS_building_Agent
 COPY --chown=volttron:volttron source/buildingsetup.py /code/volttron/volttron/TNS_building_Agent/setup.py
 
-COPY --chown=volttron:volttron source/eplus /code/volttron/volttron/eplus
 
 ########################################
 # The following lines should be run from any Dockerfile-old that
