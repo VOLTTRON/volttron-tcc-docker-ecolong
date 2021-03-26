@@ -48,6 +48,7 @@ with open(platform_config) as cin:
 
 print("Platform instance name set to: {}".format(platform_cfg.get('instance-name')))
 
+# TODO: should be done in the Dockerfile; assume all instances are web-enabled
 bind_web_address = platform_cfg.get("bind-web-address", None)
 if bind_web_address is not None:
     print(f"Platform bind web address set to: {bind_web_address}")
@@ -243,6 +244,9 @@ if need_to_install:
                 subprocess.check_call(entry_cmd)
 
     # Stop running volttron now that it is setup.
+    auth_add = ["vctl", "auth", "add", "--credentials", '/.*/']
+    slogger.info(f"Adding * creds to auth. {auth_add}")
+    subprocess.call(auth_add)
     sys.stdout.write("\n**************************************************\n")
     sys.stdout.write("SHUTTING DOWN FROM SETUP-PLATFORM.PY\n")
     sys.stdout.write("**************************************************\n")

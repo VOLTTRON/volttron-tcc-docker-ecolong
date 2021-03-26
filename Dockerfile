@@ -98,6 +98,9 @@ FROM volttron_core AS volttron_tcc
 ARG BUILDINGS
 
 USER $VOLTTRON_USER
+# TODO: try to install web dependencies here instead of in core/setup-platform.py
+#WORKDIR /code/volttron
+#RUN pip3 install -e . --user
 RUN pip3 install pandas sympy transitions scipy patsy decorators
 
 COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl

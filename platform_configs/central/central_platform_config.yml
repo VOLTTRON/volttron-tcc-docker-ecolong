@@ -4,6 +4,7 @@
 # as key=value
 config:
   vip-address: tcp://172.28.5.5:22915
+  bind-web-address: http://172.28.5.5:8445
   instance-name: central
   message-bus: zmq
 
@@ -23,6 +24,11 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
+  forwarder.tns_sim_lo:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/lo-forwarder.config
+    tag: forwarder
+
   tns.campus:
     source: $VOLTTRON_ROOT/volttron/TNS_campus_Agent
     config: $CONFIG/tns_campus.config
@@ -32,11 +38,5 @@ agents:
     source: $VOLTTRON_ROOT/volttron/TNS_city_Agent
     config: $CONFIG/tns_city.config
     tag: tns_city
-
-#  forwarder.tns_sim_lo:
-#    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
-#    config: $CONFIG/lo-forwarder.config
-#    tag: forwarder
-#    priority: 10
 
 
