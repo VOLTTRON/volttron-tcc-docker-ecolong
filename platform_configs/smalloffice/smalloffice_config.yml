@@ -3,9 +3,9 @@
 # the values will be presented in the config file
 # as key=value
 config:
-  vip-address: tcp://172.28.5.1:22911
-  bind-web-address: http://172.28.5.1:8441
-  instance-name: building1
+  vip-address: tcp://172.28.5.2:22912
+  bind-web-address: http://172.28.5.2:8442
+  instance-name: smalloffice
   message-bus: zmq
 
 # Agents dictionary to install.  The key must be a valid
@@ -24,21 +24,16 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
-  # TODO: add rest of ahu1-4 vavs
-  platform.vav100:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/100_CLGSETP.config
-    tag: vav
+  # TODO: add rest of RTU's
+  platform.rtu1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu1.config
+    tag: rtu
 
-  # TODO: add ahu2-4
-  platform.ahu1:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
-    config: $CONFIG/AHU1.config
-    tag: ahu
-
-  platform.light129:
+  # TODO: add rest of lights
+  platform.light1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
-    config: $CONFIG/129_LIGHT.config
+    config: $CONFIG/lighting1.config
     tag: light
 
   platform.uncontrol_load:
@@ -53,18 +48,17 @@ agents:
 
   tns.building_agent:
     source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
-    config: $CONFIG/BUILDING1.config
+    config: $CONFIG/SMALL_OFFICE.config
     tag: tns_building
 
   platform.actuator:
     source: $VOLTTRON_ROOT/volttron/pnnl/energyplusagent
-    config: $CONFIG/ep_building1.config
+    config: $CONFIG/ep_small_office.config
     tag: eplus
 
   forwarder.tns_pnnl:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/forwarder.config
     tag: forwarder
-#    priority: 10 # setting at 10 instead of using default 50 results in a failed build
 
 

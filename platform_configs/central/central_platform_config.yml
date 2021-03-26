@@ -24,6 +24,9 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
+  # TODO: add rest of forwarders: . upgrade-scripts/campus_city/upgrade-b1-forwarder
+    #. upgrade-scripts/campus_city/upgrade-so-forwarder
+    #. upgrade-scripts/campus_city/upgrade-brsw-forwarder
   forwarder.tns_sim_lo:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/lo-forwarder.config
