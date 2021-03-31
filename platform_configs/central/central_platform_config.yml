@@ -24,12 +24,24 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
-  # TODO: add rest of forwarders: . upgrade-scripts/campus_city/upgrade-b1-forwarder
-    #. upgrade-scripts/campus_city/upgrade-so-forwarder
-    #. upgrade-scripts/campus_city/upgrade-brsw-forwarder
+  forwarder.tns_sim_b1:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/b1-forwarder.config
+    tag: forwarder
+
+  forwarder.tns_sim_so:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/so-forwarder.config
+    tag: forwarder
+
   forwarder.tns_sim_lo:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/lo-forwarder.config
+    tag: forwarder
+
+  forwarder.tns_sim_brsw:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/brsw-forwarder.config
     tag: forwarder
 
   tns.campus:

@@ -42,7 +42,14 @@ RUN set -eux; apt-get update --fix-missing; apt-get install -y --no-install-reco
     curl \
     ca-certificates \
     libffi-dev \
-    locales
+    locales \
+    default-jdk
+
+# Download and install energyplus
+RUN wget https://github.com/NREL/EnergyPlus/releases/download/v8.6.0/EnergyPlus-8.6.0-198c6a3cff-Linux-x86_64.sh
+# This command will automate the interactive installation script by automatically answering the three questions being presented:
+# The printf command mimics the manual action of entering "yes" followed by two "enter" commands to accept the default configuration
+RUN printf 'y\n\n\n\n\n' | bash EnergyPlus-8.6.0-198c6a3cff-Linux-x86_64.sh
 
 RUN locale-gen en_US.UTF-8
 
@@ -75,20 +82,7 @@ COPY ./core/slogger.py /startup/slogger.py
 RUN chmod +x /startup/*
 
 
-############################################
-# RABBITMQ SPECIFIC INSTALLATION
-# UNCOMMENT IF NEEDED
-############################################
-#USER root
-#RUN ./scripts/rabbit_dependencies.sh $OS_TYPE $DIST
-#RUN python3 -m pip install gevent-pika
-#USER $VOLTTRON_USER
-#RUN mkdir $RMQ_ROOT
-#RUN set -eux \
-#    && wget -P $VOLTTRON_USER_HOME https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.7/rabbitmq-server-generic-unix-3.7.7.tar.xz \
-#    && tar -xf $VOLTTRON_USER_HOME/rabbitmq-server-generic-unix-3.7.7.tar.xz --directory $RMQ_ROOT \
-#    && $RMQ_HOME/sbin/rabbitmq-plugins enable rabbitmq_management rabbitmq_federation rabbitmq_federation_management rabbitmq_shovel rabbitmq_shovel_management rabbitmq_auth_mechanism_ssl rabbitmq_trust_store
-############################################
+
 
 
 ############################################

@@ -20,14 +20,8 @@ services:
     volumes:
       - ./platform_configs/building1/agent_configs:/home/volttron/configs
       - ./platform_configs/building1/building1_config.yml:/platform_config.yml
-
-#    volumes:
-      #change the following to map to the respective configs
-#       - ./transactivecontrol/MarketAgents/:/home/volttron/volttron/config/
-#       - ./log/:/code/volttron/volttron/log
-#       - ./volttron-GS/:/home/volttron/volttron/transactivecontrol
-#       - ./source/bcvtb:/home/volttron/volttron/bcvtb
-#    command: bash upgrade-scripts/upgrade-b1-tns
+      - ./source/bcvtb:/code/volttron/bcvtb
+      - ./log:/code/volttron/volttron/log
 
   smalloffice:
     image: volttron/volttron:tcc
@@ -48,8 +42,8 @@ services:
     volumes:
       - ./platform_configs/smalloffice/agent_configs:/home/volttron/configs
       - ./platform_configs/smalloffice/smalloffice_config.yml:/platform_config.yml
-
-#    command: bash upgrade-scripts/upgrade-sm-tns
+      - ./source/bcvtb:/code/volttron/bcvtb
+      - ./log:/code/volttron/volttron/log
 
   largeoffice:
     image: volttron/volttron:tcc
@@ -70,9 +64,9 @@ services:
     volumes:
       - ./platform_configs/largeoffice/agent_configs:/home/volttron/configs
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
+      - ./source/bcvtb:/code/volttron/bcvtb
+      - ./log:/code/volttron/volttron/log
       - volttron_largeoffice:/code/volttron
-      - log_largeoffice:/home/volttron/volttron/log
-#    command: bash upgrade-scripts/upgrade-lo-tns
 
   brsw:
     image: volttron/volttron:tcc
@@ -93,8 +87,9 @@ services:
     volumes:
       - ./platform_configs/brsw/agent_configs:/home/volttron/configs
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
+      - ./source/bcvtb:/code/volttron/bcvtb
+      - ./log:/code/volttron/volttron/log
       - volttron_brsw:/code/volttron
-      - log_brsw:/home/volttron/volttron/log
 
   central:
     image: volttron/volttron:tcc
@@ -115,7 +110,8 @@ services:
     volumes:
       - ./platform_configs/central/agent_configs:/home/volttron/configs
       - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
-
+      - ./source/bcvtb:/code/volttron/bcvtb
+      - ./log:/code/volttron/volttron/log
 
 networks:
   tcc_network:
@@ -129,9 +125,5 @@ networks:
 volumes:
   volttron_largeoffice:
     name: tcc_volttron_largeoffice
-  log_largeoffice:
-    name: tcc_log_largeoffice
   volttron_brsw:
     name: tcc_volttron_brsw
-  log_brsw:
-    name: tcc_log_brsw

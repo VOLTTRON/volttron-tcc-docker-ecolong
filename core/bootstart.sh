@@ -20,6 +20,7 @@ fi
 echo "Setup of Volttron platform is complete."
 echo "Starting Volttron........."
 
+#volttron -vv --log-config /code/volttron/examples/rotatinglog.py
 volttron -vv
 
 volttron_retcode=$?
