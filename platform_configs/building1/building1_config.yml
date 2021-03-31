@@ -25,17 +25,107 @@ agents:
     tag: listener
 
   # TODO: add rest of ahu1-4 vavs
-  platform.vav100:
+  platform.vav102:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/100_CLGSETP.config
+    config: $CONFIG/102_CLGSETP.config
     tag: vav
 
-  # TODO: add ahu2-4
+  platform.vav118:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/118_CLGSETP.config
+    tag: vav
+
+  platform.vav119:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/119_CLGSETP.config
+    tag: vav
+
+  platform.vav120:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/120_CLGSETP.config
+    tag: vav
+
+  platform.vav121:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/121_CLGSETP.config
+    tag: vav
+
+  platform.vav123a:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/123a_CLGSETP.config
+    tag: vav
+
+  platform.vav123b:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/123b_CLGSETP.config
+    tag: vav
+
+  platform.vav127a:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/127a_CLGSETP.config
+    tag: vav
+
+  platform.vav127b:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/127b_CLGSETP.config
+    tag: vav
+
+  platform.vav129:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/129_CLGSETP.config
+    tag: vav
+
+  platform.vav131:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/131_CLGSETP.config
+    tag: vav
+
+  platform.vav133:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/133_CLGSETP.config
+    tag: vav
+
+  platform.vav136:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/136_CLGSETP.config
+    tag: vav
+
+  platform.vav142:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/142_CLGSETP.config
+    tag: vav
+
+  platform.vav143:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/143_CLGSETP.config
+    tag: vav
+
+  platform.vav150:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/150_CLGSETP.config
+    tag: vav
+
   platform.ahu1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
     config: $CONFIG/AHU1.config
     tag: ahu
 
+  platform.ahu2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU2.config
+    tag: ahu
+
+  platform.ahu3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU3.config
+    tag: ahu
+
+  platform.ahu4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU4.config
+    tag: ahu
+
+  # TODO: add rest of light agents
   platform.light129:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
     config: $CONFIG/129_LIGHT.config

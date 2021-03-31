@@ -19,8 +19,18 @@ ENV RMQ_ROOT=${VOLTTRON_USER_HOME}/rabbitmq_server
 ENV RMQ_HOME=${RMQ_ROOT}/rabbitmq_server-3.7.7
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
+ENV TZ=America/Los_Angeles
 
 USER root
+
+# ubuntu bioinic image does not come with /etc/timezone or /etc/localtime, resulting in UTC warnings on every vctl command
+# need to manually add tzdata and configure timezone here
+RUN echo $TZ > /etc/timezone
+RUN apt-get update && apt-get install -y tzdata
+RUN rm /etc/localtime
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+RUN dpkg-reconfigure -f noninteractive tzdata
+
 RUN set -eux; apt-get update --fix-missing; apt-get install -y --no-install-recommends \
     procps \
     gosu \

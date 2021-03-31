@@ -24,10 +24,29 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
-  # TODO: add rest of RTU's
   platform.rtu1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
     config: $CONFIG/CSP1.config
+    tag: rtu
+
+  platform.rtu2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/CSP2.config
+    tag: rtu
+
+  platform.rtu3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/CSP3.config
+    tag: rtu
+
+  platform.rtu4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/CSP4.config
+    tag: rtu
+
+  platform.rtu5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/CSP5.config
     tag: rtu
 
   platform.uncontrol_load:
