@@ -55,11 +55,12 @@ RUN set -eux; apt-get update --fix-missing; apt-get install -y --no-install-reco
     locales \
     default-jdk
 
-# Download and install energyplus
-RUN wget https://github.com/NREL/EnergyPlus/releases/download/v8.6.0/EnergyPlus-8.6.0-198c6a3cff-Linux-x86_64.sh
+# Download and install energyplus 8.5.0
+# DO NOT update to latest version; IDF files for energyplus are not backward compatible
+RUN wget https://github.com/NREL/EnergyPlus/releases/download/v8.5.0/EnergyPlus-8.5.0-c87e61b44b-Linux-x86_64.sh
 # This command will automate the interactive installation script by automatically answering the three questions being presented:
 # The printf command mimics the manual action of entering "yes" followed by two "enter" commands to accept the default configuration
-RUN printf 'y\n\n\n\n\n' | bash EnergyPlus-8.6.0-198c6a3cff-Linux-x86_64.sh
+RUN printf 'y\n\n\n\n\n' | bash EnergyPlus-8.5.0-c87e61b44b-Linux-x86_64.sh
 
 RUN locale-gen en_US.UTF-8
 
@@ -91,10 +92,6 @@ COPY ./core/setup-platform.py /startup/setup-platform.py
 COPY ./core/slogger.py /startup/slogger.py
 RUN chmod +x /startup/*
 
-
-
-
-
 ############################################
 # ENDING volttron_core image
 ############################################
@@ -104,7 +101,7 @@ ARG BUILDINGS
 USER $VOLTTRON_USER
 # TODO: try to install web dependencies here instead of in core/setup-platform.py
 #WORKDIR /code/volttron
-#RUN pip3 install -e . --user
+#RUN pip3 install <the web dependencies in requirements.py>
 RUN pip3 install pandas sympy transitions scipy patsy decorators
 
 COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl
