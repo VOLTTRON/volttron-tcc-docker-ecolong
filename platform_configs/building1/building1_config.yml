@@ -24,7 +24,6 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
-  # TODO: add rest of ahu1-4 vavs
   platform.vav102:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
     config: $CONFIG/102_CLGSETP.config
@@ -104,6 +103,46 @@ agents:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
     config: $CONFIG/150_CLGSETP.config
     tag: vav
+
+  platform.vav2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/002_CLGSETP.config
+    tag: vav
+
+  platform.vav104:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/104_CLGSETP.config
+    tag: vav
+
+  platform.vav105:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/105_CLGSETP.config
+      tag: vav
+
+  platform.vav107:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/107_CLGSETP.config
+      tag: vav
+
+  platform.vav108:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/108_CLGSETP.config
+      tag: vav
+
+  platform.vav112:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/112_CLGSETP.config
+      tag: vav
+
+  platform.vav116:
+        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+        config: $CONFIG/116_CLGSETP.config
+        tag: vav
+
+  platform.vav4:
+        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+        config: $CONFIG/004_CLGSETP.config
+        tag: vav
 
   platform.ahu1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
