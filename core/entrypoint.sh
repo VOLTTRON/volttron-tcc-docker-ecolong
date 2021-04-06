@@ -38,5 +38,6 @@ if [[ $# -lt 1 ]]; then
   exit 1;
 else
   echo "now Executing $@";
+  # run the following script as the 'volttron' user
   exec gosu volttron "$@";
 fi

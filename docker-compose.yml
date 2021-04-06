@@ -22,6 +22,7 @@ services:
       - ./platform_configs/building1/building1_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/code/volttron/volttron/log
+      - volttron_building1_logs:/home/volttron/volttron/log/volttron.log
 
   smalloffice:
     image: volttron/volttron:tcc
@@ -112,6 +113,7 @@ services:
       - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/code/volttron/volttron/log
+      - volttron_central_logs:/home/volttron/volttron/log/volttron.log
 
 networks:
   tcc_network:
@@ -127,3 +129,7 @@ volumes:
     name: tcc_volttron_largeoffice
   volttron_brsw:
     name: tcc_volttron_brsw
+  volttron_central_logs:
+    name: tcc_central_logs
+  volttron_building1_logs:
+    name: tcc_building_logs

@@ -53,7 +53,8 @@ RUN set -eux; apt-get update --fix-missing; apt-get install -y --no-install-reco
     ca-certificates \
     libffi-dev \
     locales \
-    default-jdk
+    default-jdk \
+    iputils-ping
 
 # Download and install energyplus 8.5.0
 # DO NOT update to latest version; IDF files for energyplus are not backward compatible
