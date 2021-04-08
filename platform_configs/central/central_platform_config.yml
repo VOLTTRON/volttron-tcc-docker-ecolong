@@ -14,11 +14,6 @@ agents:
 
   # Each agent identity.config file should be in the configs
   # directory and will be used to install the agent.
-  platform.historian:
-    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-    config: $CONFIG/sqlhistorian.config
-    tag: sqlite-db
-
   listener:
     source: $VOLTTRON_ROOT/examples/ListenerAgent
     config: $CONFIG/listener.config
@@ -53,5 +48,10 @@ agents:
     source: $VOLTTRON_ROOT/volttron/TNS_city_Agent
     config: $CONFIG/tns_city.config
     tag: tns_city
+
+#  platform.historian:
+#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+#    config: $CONFIG/sqlhistorian.config
+#    tag: sqlite-db
 
 

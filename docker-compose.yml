@@ -3,6 +3,8 @@ version: '3.4'
 services:
   building1:
     image: volttron/volttron:tcc
+    depends_on:
+      - central
     container_name: building1
     hostname: building1
     networks:
@@ -17,15 +19,17 @@ services:
     environment:
       - CONFIG=/home/volttron/configs
       - LOCAL_USER_ID=1000
+      - LOG_PREFIX=building1-setup
     volumes:
       - ./platform_configs/building1/agent_configs:/home/volttron/configs
       - ./platform_configs/building1/building1_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
-      - ./log:/code/volttron/volttron/log
-      - volttron_building1_logs:/home/volttron/volttron/log/volttron.log
+      - ./log:/home/volttron/logs
 
   smalloffice:
     image: volttron/volttron:tcc
+    depends_on:
+      - central
     container_name: smalloffice
     hostname: smalloffice
     networks:
@@ -40,14 +44,17 @@ services:
     environment:
       - CONFIG=/home/volttron/configs
       - LOCAL_USER_ID=1000
+      - LOG_PREFIX=smalloffice-setup
     volumes:
       - ./platform_configs/smalloffice/agent_configs:/home/volttron/configs
       - ./platform_configs/smalloffice/smalloffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
-      - ./log:/code/volttron/volttron/log
+      - ./log:/home/volttron/logs
 
   largeoffice:
     image: volttron/volttron:tcc
+    depends_on:
+      - central
     container_name: largeoffice
     hostname: largeoffice
     networks:
@@ -62,15 +69,18 @@ services:
     environment:
       - CONFIG=/home/volttron/configs
       - LOCAL_USER_ID=1000
+      - LOG_PREFIX=largeoffice-setup
     volumes:
       - ./platform_configs/largeoffice/agent_configs:/home/volttron/configs
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
-      - ./log:/code/volttron/volttron/log
+      - ./log:/home/volttron/logs
       - volttron_largeoffice:/code/volttron
 
   brsw:
     image: volttron/volttron:tcc
+    depends_on:
+      - central
     container_name: brsw
     hostname: brsw
     networks:
@@ -85,11 +95,12 @@ services:
     environment:
       - CONFIG=/home/volttron/configs
       - LOCAL_USER_ID=1000
+      - LOG_PREFIX=brsw-setup
     volumes:
       - ./platform_configs/brsw/agent_configs:/home/volttron/configs
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
-      - ./log:/code/volttron/volttron/log
+      - ./log:/home/volttron/logs
       - volttron_brsw:/code/volttron
 
   central:
@@ -108,12 +119,12 @@ services:
     environment:
       - CONFIG=/home/volttron/configs
       - LOCAL_USER_ID=1000
+      - LOG_PREFIX=central-setup
     volumes:
       - ./platform_configs/central/agent_configs:/home/volttron/configs
       - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
-      - ./log:/code/volttron/volttron/log
-      - volttron_central_logs:/home/volttron/volttron/log/volttron.log
+      - ./log:/home/volttron/logs
 
 networks:
   tcc_network:
@@ -129,7 +140,3 @@ volumes:
     name: tcc_volttron_largeoffice
   volttron_brsw:
     name: tcc_volttron_brsw
-  volttron_central_logs:
-    name: tcc_central_logs
-  volttron_building1_logs:
-    name: tcc_building_logs

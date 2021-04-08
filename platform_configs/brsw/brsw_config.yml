@@ -14,11 +14,6 @@ agents:
 
   # Each agent identity.config file should be in the configs
   # directory and will be used to install the agent.
-  platform.historian:
-    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-    config: $CONFIG/sqlhistorian.config
-    tag: sqlite-db
-
   listener:
     source: $VOLTTRON_ROOT/examples/ListenerAgent
     config: $CONFIG/listener.config
@@ -28,37 +23,42 @@ agents:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
     config: $CONFIG/CSP1.config
     tag: rtu
-
-  platform.rtu2:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
-    config: $CONFIG/CSP2.config
-    tag: rtu
-
-  platform.rtu3:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
-    config: $CONFIG/CSP3.config
-    tag: rtu
-
-  platform.rtu4:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
-    config: $CONFIG/CSP4.config
-    tag: rtu
-
-  platform.rtu5:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
-    config: $CONFIG/CSP5.config
-    tag: rtu
-
-  platform.uncontrol_load:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
-    config: $CONFIG/uncontrol.config
-    tag: uncontrol_load
-
+#
+#  platform.rtu2:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+#    config: $CONFIG/CSP2.config
+#    tag: rtu
+#
+#  platform.rtu3:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+#    config: $CONFIG/CSP3.config
+#    tag: rtu
+#
+#  platform.rtu4:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+#    config: $CONFIG/CSP4.config
+#    tag: rtu
+#
+#  platform.rtu5:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+#    config: $CONFIG/CSP5.config
+#    tag: rtu
+#
+#  platform.uncontrol_load:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+#    config: $CONFIG/uncontrol.config
+#    tag: uncontrol_load
+#
   platform.market:
     source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
     config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
     tag: market-service
-
+#
+#  platform.historian:
+#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+#    config: $CONFIG/sqlhistorian.config
+#    tag: sqlite-db
+#
   tns.building_agent:
     source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
     config: $CONFIG/BRSW.config

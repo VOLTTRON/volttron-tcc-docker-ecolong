@@ -14,44 +14,45 @@ agents:
 
   # Each agent identity.config file should be in the configs
   # directory and will be used to install the agent.
-  platform.historian:
-    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-    config: $CONFIG/sqlhistorian.config
-    tag: sqlite-db
-
   listener:
     source: $VOLTTRON_ROOT/examples/ListenerAgent
     config: $CONFIG/listener.config
     tag: listener
 
-  # TODO: add ahu2-4 vav
   platform.vavb:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
     config: $CONFIG/Basement_CLGSETP.config
     tag: vav
 
-  # TODO: add rest of ahu2-4
   platform.ahu1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
     config: $CONFIG/AHU1.config
     tag: ahu
 
-  # TODO: add rest of lights
-  platform.lightb1:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
-    config: $CONFIG/Perimeter_bot_ZN_1_BLDG_LIGHT.config
-    tag: light
+  # TODO: add ahu2-4 vav
+  # TODO: add rest of ahu2-4
 
-  platform.uncontrol_load:
-    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
-    config: $CONFIG/uncontrol_load.config
-    tag: uncontrol_load
-
-  platform.market:
-    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
-    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
-    tag: market-service
-
+#  # TODO: add rest of lights
+#  platform.lightb1:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+#    config: $CONFIG/Perimeter_bot_ZN_1_BLDG_LIGHT.config
+#    tag: light
+#
+#  platform.uncontrol_load:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+#    config: $CONFIG/uncontrol_load.config
+#    tag: uncontrol_load
+#
+#  platform.market:
+#    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
+#    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
+#    tag: market-service
+#
+#  platform.historian:
+#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+#    config: $CONFIG/sqlhistorian.config
+#    tag: sqlite-db
+#
   tns.building_agent:
     source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
     config: $CONFIG/LARGE_OFFICE.config

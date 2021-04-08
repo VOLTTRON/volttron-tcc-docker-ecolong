@@ -19,24 +19,20 @@ fi
 
 echo "Setup of Volttron platform is complete."
 echo "Starting Volttron for container: $(hostname)........."
-mkdir -p /home/volttron/volttron/log
-volttron -vv -l /home/volttron/volttron/log/volttron.log > /dev/null 2>&1&
+volttron -vv -l /home/volttron/logs/$(hostname).volttron.log > /dev/null 2>&1 &
 disown
-sleep 5
+sleep 10
 
 # specific startup actions for each volttron instance
 echo "Running additional startup actions for $(hostname)"
 if [[ $(hostname) == "central" ]]; then
-  sleep 60
-  vctl start --tag forwarder listener sqlite-db tns_campus
-#  while : ;do
-#    [[ -f "/home/volttron/volttron/log/volttron.log" ]] && grep -q "devices/PNNL/BUILDING1/AHU2/all" "/home/volttron/volttron/log/tns.log" && echo "FOUND" && break
-#    sleep 5
-#  done
-#  vctl start --tag tns_city
-elif [[ $(hostname) == "building1" ]]; then
-  echo "Starting agents..."
-  vctl start --tag listener vav ahu eplus light market-service sqlite-db tns_building uncontrol_load forwarder
+  vctl stop --tag forwarder
+  sleep 300 # 5 minutes
+  vctl restart --tag listener
+  vctl restart --tag tns_campus tns_city
+  vctl start --tag forwarder
+else
+  vctl restart --tag eplus forwarder listener
 fi
 
 

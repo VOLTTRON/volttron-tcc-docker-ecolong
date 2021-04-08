@@ -7,7 +7,7 @@ from time import sleep
 from volttron.platform import set_home, certs
 from slogger import get_logger
 
-slogger = get_logger("setup-platform", "setup")
+slogger = get_logger("setup-platform", os.environ['LOG_PREFIX'])
 
 # The environment variables must be set or we have big issues
 VOLTTRON_ROOT = os.environ["VOLTTRON_ROOT"]
@@ -18,6 +18,7 @@ VOLTTRON_CTL_CMD = "volttron-ctl"
 VOLTTRON_CFG_CMD = "vcfg"
 INSTALL_PATH = "{}/scripts/install-agent.py".format(VOLTTRON_ROOT)
 KEYSTORES = os.path.join(VOLTTRON_HOME, "keystores")
+AGENT_START_TIME = "90"
 
 if not VOLTTRON_HOME:
     VOLTTRON_HOME = "/home/volttron/.volttron"
@@ -29,10 +30,12 @@ def get_platform_config_path():
         platform_config = os.environ["PLATFORM_CONFIG"]
     elif os.path.isfile("/platform_config.yml"):
         platform_config = "/platform_config.yml"
+    slogger.info(f"Platform_config: {platform_config}")
 
     # Stop processing if platform config hasn't been specified
     if platform_config is None:
         sys.stderr.write("No platform configuration specified.")
+        slogger.debug("No platform configuration specified.")
         sys.exit(0)
 
     return platform_config
@@ -79,7 +82,7 @@ def configure_platform(platform_cfg):
 def install_agents(agents):
     need_to_install = {}
 
-    print("Available agents that are needing to be setup/installed")
+    sys.stdout.write("Available agents that are needing to be setup/installed")
     print(agents)
 
     # TODO Fix so that the agents identities are consulted.
@@ -97,10 +100,11 @@ def install_agents(agents):
 
         envcpy = os.environ.copy()
         for identity, spec in need_to_install.items():
-            slogger.info("Processing identity: {}\n".format(identity))
+            slogger.info("Processing identity: {}".format(identity))
             sys.stdout.write("Processing identity: {}\n".format(identity))
             agent_cfg = None
             if "source" not in spec:
+                slogger.info(f"Invalid source for identity: {identity}")
                 sys.stderr.write("Invalid source for identity: {}\n".format(identity))
                 continue
 
@@ -109,6 +113,7 @@ def install_agents(agents):
                     os.path.expandvars(os.path.expanduser(spec["config"]))
                 )
                 if not os.path.exists(agent_cfg):
+                    slogger.info(f"Invalid config {agent_cfg} for identity {identity}")
                     sys.stderr.write(
                         "Invalid config ({}) for agent id identity: {}\n".format(
                             agent_cfg, identity
@@ -119,6 +124,7 @@ def install_agents(agents):
             agent_source = os.path.expandvars(os.path.expanduser(spec["source"]))
 
             if not os.path.exists(agent_source):
+                slogger.info(f"Invalid agent source {agent_source} for identity {identity}")
                 sys.stderr.write(
                     "Invalid agent source ({}) for agent id identity: {}\n".format(
                         agent_source, identity
@@ -133,8 +139,8 @@ def install_agents(agents):
             install_cmd = ["python3", INSTALL_PATH]
             install_cmd.extend(["--agent-source", agent_source])
             install_cmd.extend(["--vip-identity", identity])
-            # install_cmd.extend(["--start", "--priority", priority])
-            # install_cmd.extend(["--agent-start-time", "30"])
+            install_cmd.extend(["--start", "--priority", priority])
+            install_cmd.extend(["--agent-start-time", AGENT_START_TIME])
             install_cmd.append("--force")
             install_cmd.extend(["--tag", tag])
             if agent_cfg:
@@ -143,12 +149,20 @@ def install_agents(agents):
             # This allows install agent to ignore the fact that we aren't running
             # form a virtual environment.
             envcpy["IGNORE_ENV_CHECK"] = "1"
-            subprocess.check_call(install_cmd, env=envcpy)
+            try:
+                subprocess.check_call(install_cmd, env=envcpy)
+            except subprocess.CalledProcessError as e:
+                # sometimes, the install command returns an Error saying that volttron couldn't install the agent, when in fact the agent was successfully installed
+                # this is most likely a bug in Volttron. For now, we are ignoring that error so that the setup of the Volttron platform does not fail and to allow Docker to start the container
+                sys.stderr.write(f"IGNORING ERROR: {e}")
+                slogger.debug(f"IGNORING ERROR: {e} \n {e.stdout}")
+                continue
 
             if "config_store" in spec:
                 sys.stdout.write("Processing config_store entries")
                 for key, entry in spec["config_store"].items():
                     if "file" not in entry or not entry["file"]:
+                        slogger.info(f"Invalid config store entry; file must be specified for {key}")
                         sys.stderr.write(
                             "Invalid config store entry file must be specified for {}".format(
                                 key
@@ -158,6 +172,7 @@ def install_agents(agents):
                     entry_file = os.path.expandvars(os.path.expanduser(entry["file"]))
 
                     if not os.path.exists(entry_file):
+                        slogger.info(f"Invalid config store file not exist: {entry_file}")
                         sys.stderr.write(
                             "Invalid config store file does not exist {}".format(
                                 entry_file
@@ -180,12 +195,14 @@ def install_agents(agents):
 
 
 def final_platform_configurations():
+    # allows platform to automatically accept all incoming auth requests
     auth_add = ["vctl", "auth", "add", "--credentials", "/.*/"]
     slogger.info(f"Adding * creds to auth. {auth_add}")
     subprocess.call(auth_add)
 
     sys.stdout.write("\n**************************************************\n")
     sys.stdout.write("SHUTTING DOWN FROM SETUP-PLATFORM.PY\n")
+    slogger.info("SHUTTING DOWN FROM SETUP-PLATFORM.PY")
     sys.stdout.write("**************************************************\n")
     subprocess.call(["vctl", "shutdown", "--platform"])
 
