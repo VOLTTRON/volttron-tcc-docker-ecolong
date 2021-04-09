@@ -155,7 +155,7 @@ def install_agents(agents):
                 # sometimes, the install command returns an Error saying that volttron couldn't install the agent, when in fact the agent was successfully installed
                 # this is most likely a bug in Volttron. For now, we are ignoring that error so that the setup of the Volttron platform does not fail and to allow Docker to start the container
                 sys.stderr.write(f"IGNORING ERROR: {e}")
-                slogger.debug(f"IGNORING ERROR: {e} \n {e.stdout}")
+                slogger.debug(f"IGNORING ERROR: {e}")
                 continue
 
             if "config_store" in spec:

@@ -3,7 +3,7 @@
 * Docker version 20.10.5, build 55c4c88
 * docker-compose version 1.28.5, build c4eb3a1f
 
-# NOTES
+# Notes
 
 * The volttron source code used is pinned to [`releases/8.x`](https://github.com/VOLTTRON/volttron/tree/releases/8.x)
 * The docker image uses a minimal base image of Ubuntu 20.04 (focal)
@@ -53,11 +53,29 @@ myuser@1234:~$ docker exec -itu volttron building1 bash
 volttron@building1:~$ tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log
 ```
 
+## Container info
 
+All containers are explicitly named in docker-compose.yml; specifically, each service defined in docker-compose.yml has a 'container_name' section. Thus, you can easily enter into a container via a human-readable container name. 
+For example, to enter into the Volttron central instance, use ```docker-compose exec -itu volttron central bash```.  
+
+In addition, the hostnames for the containers have also been explicitly defined in docker-compose.yml; each service has a `hostname` section. With this configuration, you know exactly which container you are in; this is helpful when opening several shells to monitor several buildings.
+For example:
+
+```shell
+# shell1
+$ docker-compose exec -itu volttron central bash
+volttron@central:~$
+
+# shell2
+$ docker-compose exec -itu volttron building1 bash
+volttron@building1:~$
+```
 
 ## Aliases in the container
 
-Aliases have been added to each container to aid in debugging and viewing logs. 
+Aliases have been added to each container to aid in debugging and viewing logs. Note: Sometimes Docker doesn't successfully source the .bashrc file to ensure aliases have been added to the shell, resulting 
+in a "Command not found" error. If this happens, simply run the following command in your container to register all the aliases: ```source "${VOLTTRON_USER_HOME}/.bashrc"```
+
 All containers have the following aliases:
 
 ```shell

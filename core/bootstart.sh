@@ -52,7 +52,7 @@ if [[ $(hostname) == "central" ]]; then
   vctl restart --tag tns_campus tns_city
   vctl start --tag forwarder
 else
-  vctl restart --tag eplus forwarder listener
+  vctl restart --tag eplus forwarder listener tns_building
 fi
 
 
