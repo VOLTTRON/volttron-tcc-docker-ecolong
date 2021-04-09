@@ -20,10 +20,10 @@ agents:
     tag: listener
 
   # TODO: add rest of RTU's
-#  platform.rtu1:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
-#    config: $CONFIG/rtu1.config
-#    tag: rtu
+  platform.rtu1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu1.config
+    tag: rtu
 #
   # TODO: add rest of lights
 #  platform.light1:

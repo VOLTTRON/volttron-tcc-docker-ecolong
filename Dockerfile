@@ -104,6 +104,8 @@ USER $VOLTTRON_USER
 #WORKDIR /code/volttron
 #RUN pip3 install <the web dependencies in requirements.py>
 RUN pip3 install pandas sympy transitions scipy patsy decorators
+RUN echo "alias vstat='vctl status'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+RUN echo "source ~/.bash_aliases" >> "$VOLTTRON_USER_HOME/.bashrc"
 
 COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl
 COPY --chown=volttron:volttron volttron-GS/eplus /code/volttron/volttron/pnnl
