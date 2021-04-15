@@ -24,26 +24,14 @@
 $ git submodule update --init --recursive 
 ```
 
-2. Build image and set name to "volttron/volttron:tcc"
+2. Build image and start container
 
 ```shell
-$ docker build -t volttron/volttron:tcc .
+$ docker-compose up --build
 ```
 
-3. Start container
 
-```shell
-$ docker-compose up
-```
-
-* If a container fails to start or stops, restart the starting of the containers. Follow the commands below:
-
-```shell
-$ docker-compose down
-$ docker-compose up 
-```
-
-4. To view the logs of a service, enter inside the container and tail the logs. The command to tail the logs works 
+3. To view the logs of a service, enter inside the container and tail the logs. The command to tail the logs works 
    for all containers. Follow the example below:
 
 ```shell 
@@ -52,6 +40,8 @@ myuser@1234:~$ docker exec -itu volttron building1 bash
 # tail the logs; commands works on all containers
 volttron@building1:~$ tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log
 ```
+
+NOTE: Aliases have been added to the containers for convenience. See 'Aliases in the container' section for more details.
 
 ## Container info
 
@@ -73,8 +63,9 @@ volttron@building1:~$
 
 ## Aliases in the container
 
-Aliases have been added to each container to aid in debugging and viewing logs. Note: Sometimes Docker doesn't successfully source the .bashrc file to ensure aliases have been added to the shell, resulting 
-in a "Command not found" error. If this happens, simply run the following command in your container to register all the aliases: ```source "${VOLTTRON_USER_HOME}/.bashrc"```
+Aliases have been added to each container to aid in debugging and viewing logs. 
+
+**Note: To use these aliases in the container, first run the following command: ```source "${VOLTTRON_USER_HOME}/.bashrc"```**
 
 All containers have the following aliases:
 

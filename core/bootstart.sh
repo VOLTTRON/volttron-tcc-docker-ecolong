@@ -2,7 +2,7 @@
 
 # We are going to pre-setup the platform before running any of the environment.
 if [[ -z /startup/setup-platform.py ]]; then
-    echo "/startup/setup-platform.py does not exist.  The docker image must be corrupted"
+    echo "/startup/setup-platform.py does not exist. The docker image must be corrupted"
     exit 1
 fi
 
@@ -35,8 +35,6 @@ elif [[ $(hostname) == "smalloffice" ]]; then
 elif [[ $(hostname) == "largeoffice" ]]; then
   echo "alias grep-cmlo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/LargeOffice'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
 fi
-# shellcheck source=/home/volttron
-source "${VOLTTRON_USER_HOME}/.bashrc"
 
 echo "Starting Volttron for container: $(hostname)........."
 volttron -vv -l /home/volttron/logs/$(hostname).volttron.log > /dev/null 2>&1 &
