@@ -65,7 +65,8 @@ volttron@building1:~$
 
 Aliases have been added to each container to aid in debugging and viewing logs. 
 
-**Note: To use these aliases in the container, first run the following command: ```source "${VOLTTRON_USER_HOME}/.bashrc"```**
+**Note: To use these aliases in the container, first run the following command: 
+```source "${VOLTTRON_USER_HOME}/.bashrc"```**
 
 All containers have the following aliases:
 
