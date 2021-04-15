@@ -1,7 +1,7 @@
 [submodule "volttron-GS"]
 	path = volttron-GS
-	url = https://github.com/bonicim/volttron-GS.git # temporary until required changes merged into main at volttron-GS
-	branch = dk-compose
+	url = https://github.com/VOLTTRON/volttron-GS.git
+    branch = main
 
 [submodule "volttron"]
 	path = volttron
