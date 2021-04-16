@@ -1,0 +1,12 @@
+[submodule "volttron-GS"]
+	path = volttron-GS
+	url = https://github.com/VOLTTRON/volttron-GS.git
+    branch = main
+
+[submodule "volttron"]
+	path = volttron
+	url = https://github.com/volttron/volttron
+	branch = releases/8.x
+
+
+

@@ -1,0 +1,64 @@
+# Properties to be added to the root config file
+# the properties should be ingestible for volttron
+# the values will be presented in the config file
+# as key=value
+config:
+  vip-address: tcp://172.28.5.2:22912
+  bind-web-address: http://172.28.5.2:8442
+  instance-name: smalloffice
+  message-bus: zmq
+
+# Agents dictionary to install.  The key must be a valid
+# identity for the agent to be installed correctly.
+agents:
+
+  # Each agent identity.config file should be in the configs
+  # directory and will be used to install the agent.
+  listener:
+    source: $VOLTTRON_ROOT/examples/ListenerAgent
+    config: $CONFIG/listener.config
+    tag: listener
+
+  # TODO: add rest of RTU's
+  platform.rtu1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu1.config
+    tag: rtu
+#
+  # TODO: add rest of lights
+#  platform.light1:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+#    config: $CONFIG/lighting1.config
+#    tag: light
+#
+#  platform.uncontrol_load:
+#    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+#    config: $CONFIG/uncontrol_load.config
+#    tag: uncontrol_load
+#
+#  platform.market:
+#    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
+#    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
+#    tag: market-service
+#
+#  platform.historian:
+#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+#    config: $CONFIG/sqlhistorian.config
+#    tag: sqlite-db
+#
+  tns.building_agent:
+    source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
+    config: $CONFIG/SMALL_OFFICE.config
+    tag: tns_building
+
+  platform.actuator:
+    source: $VOLTTRON_ROOT/volttron/pnnl/energyplusagent
+    config: $CONFIG/ep_small_office.config
+    tag: eplus
+
+  forwarder.tns_pnnl:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/forwarder.config
+    tag: forwarder
+
+
