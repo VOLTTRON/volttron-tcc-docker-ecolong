@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Build a temp file string for use with the configuration
+
+python ./scripts/install-agent.py \
+     -s transactivecontrol/MarketAgents/VAVAgent/ \
+     -i platform.vavb \
+     --config  config/config/largeoffice/Basement_CLGSETP.config \
+     --tag vav \
+     --start \
+     --force
+

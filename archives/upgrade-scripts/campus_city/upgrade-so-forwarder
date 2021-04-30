@@ -1,0 +1,31 @@
+
+#!/usr/bin/env bash
+
+# Build a temp file string for use with the configuration
+export CONFIG=$(mktemp /tmp/abc-script.XXXXXX)
+
+cat > $CONFIG <<EOL
+{
+    "destination-vip": "tcp://127.0.0.1:23917",
+    "destination-serverkey": "xIV0-AuQq3sRNZPx8FfCFKOAaJUMaLfOselfr7IbHQs",
+    "custom_topic_list": [
+        "tnc/campus/SMALL_OFFICE"
+    ],
+    "capture_device_data": false,
+    "capture_log_data": false,
+    "capture_record_data": false,
+    "capture_analysis_data": false
+}
+EOL
+
+python scripts/install-agent.py \
+    -s services/core/ForwardHistorian \
+    --config $CONFIG \
+    --tag forwarder \
+    -i forwarder.tns_sim_so \
+    --priority 10 \
+    --force \
+    --start
+
+rm $CONFIG
+
