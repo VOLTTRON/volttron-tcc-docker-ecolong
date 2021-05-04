@@ -19,6 +19,16 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
+  platform.historian:
+    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+    config: $CONFIG/sqlhistorian.config
+    tag: sqlite-db
+
+  forwarder.tns_sim_lo:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/lo-forwarder.config
+    tag: forwarder
+
   forwarder.tns_sim_b1:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/b1-forwarder.config
@@ -27,11 +37,6 @@ agents:
   forwarder.tns_sim_so:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/so-forwarder.config
-    tag: forwarder
-
-  forwarder.tns_sim_lo:
-    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
-    config: $CONFIG/lo-forwarder.config
     tag: forwarder
 
   forwarder.tns_sim_brsw:
@@ -49,9 +54,6 @@ agents:
     config: $CONFIG/tns_city.config
     tag: tns_city
 
-#  platform.historian:
-#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-#    config: $CONFIG/sqlhistorian.config
-#    tag: sqlite-db
+
 
 
