@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-python scripts/install-agent.py \
-    -i platform.historian \
-    -s services/core/SQLHistorian \
-    -c config/config/smalloffice/ilc/config.sqlite \
-    --tag sqlite-db \
-    --start \
-    --force
