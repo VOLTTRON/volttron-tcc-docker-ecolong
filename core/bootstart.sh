@@ -45,20 +45,27 @@ sleep 10
 echo "Running additional startup actions for $(hostname)"
 if [[ $(hostname) == "central" ]]; then
   sleep 300 # 5 minutes
-  vctl start --tag listener
-  vctl start --tag tns_campus tns_city
+  vctl start --tag sqlite-db listener tns_campus tns_city
   vctl start --tag forwarder
 elif [[ $(hostname) == "brsw" ]]; then
-  vctl start --tag sqlite-db rtu uncontrol_load market-service tns_building eplus listener
+  vctl start --tag eplus
+  sleep 25
+  vctl start --tag rtu uncontrol_load market-service sqlite-db listener tns_building
   vctl start --tag forwarder
 elif [[ $(hostname) == "building1" ]]; then
-  vctl start --tag sqlite-db ahu vav light uncontrol_load market-service tns_building eplus listener
+  vctl start --tag eplus
+  sleep 40
+  vctl start --tag ahu vav light uncontrol_load market-service sqlite-db listener tns_building
   vctl start --tag forwarder
 elif [[ $(hostname) == "smalloffice" ]]; then
-  vctl start --tag sqlite-db rtu light uncontrol_load market-service tns_building eplus listener
+  vctl start --tag eplus
+  sleep 25
+  vctl start --tag rtu light uncontrol_load market-service sqlite-db listener tns_building
   vctl start --tag forwarder
 elif [[ $(hostname) == "largeoffice" ]]; then
-  vctl start --tag sqlite-db ahu vav light uncontrol_load market-service tns_building eplus listener
+  vctl start --tag eplus
+  sleep 16
+  vctl start --tag ahu vav light uncontrol_load market-service sqlite-db listener tns_building
   vctl start --tag forwarder
 fi
 
