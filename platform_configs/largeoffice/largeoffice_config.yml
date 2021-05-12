@@ -19,9 +19,89 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
+  platform.historian:
+    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+    config: $CONFIG/sqlhistorian.config
+    tag: sqlite-db
+
   platform.vavb:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
     config: $CONFIG/Basement_CLGSETP.config
+    tag: vav
+
+  platform.vavb1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_bot_ZN_1_CLGSETP.config
+    tag: vav
+
+  platform.vavb2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_bot_ZN_2_CLGSETP.config
+    tag: vav
+
+  platform.vavb3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_bot_ZN_3_CLGSETP.config
+    tag: vav
+
+  platform.vavb4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_bot_ZN_4_CLGSETP.config
+    tag: vav
+
+  platform.vavb5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Core_bottom_CLGSETP.config
+    tag: vav
+
+  platform.vavm1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_mid_ZN_1_CLGSETP.config
+    tag: vav
+
+  platform.vavm2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_mid_ZN_2_CLGSETP.config
+    tag: vav
+
+  platform.vavm3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_mid_ZN_3_CLGSETP.config
+    tag: vav
+
+  platform.vavm4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_mid_ZN_4_CLGSETP.config
+    tag: vav
+
+  platform.vavm5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Core_mid_CLGSETP.config
+    tag: vav
+
+  platform.vavt1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_top_ZN_1_CLGSETP.config
+    tag: vav
+
+  platform.vavt2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_top_ZN_2_CLGSETP.config
+    tag: vav
+
+  platform.vavt3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_top_ZN_3_CLGSETP.config
+    tag: vav
+
+  platform.vavt4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Perimeter_top_ZN_4_CLGSETP.config
+    tag: vav
+
+  platform.vavt5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/Core_top_CLGSETP.config
     tag: vav
 
   platform.ahu1:
@@ -29,30 +109,111 @@ agents:
     config: $CONFIG/AHU1.config
     tag: ahu
 
-  # TODO: add ahu2-4 vav
-  # TODO: add rest of ahu2-4
+  platform.ahu2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU2.config
+    tag: ahu
 
-#  # TODO: add rest of lights
-#  platform.lightb1:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
-#    config: $CONFIG/Perimeter_bot_ZN_1_BLDG_LIGHT.config
-#    tag: light
-#
-#  platform.uncontrol_load:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
-#    config: $CONFIG/uncontrol_load.config
-#    tag: uncontrol_load
-#
-#  platform.market:
-#    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
-#    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
-#    tag: market-service
-#
-#  platform.historian:
-#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-#    config: $CONFIG/sqlhistorian.config
-#    tag: sqlite-db
-#
+  platform.ahu3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU3.config
+    tag: ahu
+
+  platform.ahu4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU4.config
+    tag: ahu
+
+  platform.lightb1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_bot_ZN_1_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightb2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_bot_ZN_2_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightb3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_bot_ZN_3_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightb4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_bot_ZN_4_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightm1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_mid_ZN_1_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightm2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_mid_ZN_2_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightm3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_mid_ZN_3_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightm4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_mid_ZN_4_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightt1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_top_ZN_1_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightt2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_top_ZN_2_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightt3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_top_ZN_3_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightt4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Perimeter_top_ZN_4_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightb5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Core_bottom_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightm5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Core_mid_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightt5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Core_top_BLDG_LIGHT.config
+    tag: light
+
+  platform.lightb:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/Basement_BLDG_LIGHT.config
+    tag: light
+
+  platform.uncontrol_load:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+    config: $CONFIG/uncontrol_load.config
+    tag: uncontrol_load
+
+  platform.market:
+    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
+    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
+    tag: market-service
+
   tns.building_agent:
     source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
     config: $CONFIG/LARGE_OFFICE.config
@@ -67,5 +228,3 @@ agents:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/forwarder.config
     tag: forwarder
-
-

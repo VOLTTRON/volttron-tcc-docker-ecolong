@@ -1,0 +1,17 @@
+{
+    "agentid": "sqlhistorian-sqlite",
+    "connection": {
+        "type": "sqlite",
+        "params": {
+            "database": "~/volttron/platform.historian.sqlite"
+        }
+    },
+    "capture_device_data": false,
+    "capture_analysis_data": false,
+    "capture_log_data": false,
+    "capture_record_data": false,
+    "custom_topics": {
+        "capture_device_data": ["devices/PNNL/LargeOffice/METERS/all"],
+        "other_topic": ["tnc"]
+    }
+}

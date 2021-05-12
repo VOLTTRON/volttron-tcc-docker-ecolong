@@ -19,6 +19,11 @@ agents:
     config: $CONFIG/listener.config
     tag: listener
 
+  platform.historian:
+    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+    config: $CONFIG/sqlhistorian.config
+    tag: sqlite-db
+
 # Config for AHU1/VAV1
   platform.ahu1:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
@@ -29,166 +34,259 @@ agents:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
     config: $CONFIG/100_CLGSETP.config
     tag: vav
-#
-#  platform.vav102:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/102_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav118:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/118_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav119:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/119_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav120:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/120_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav121:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/121_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav123a:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/123a_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav123b:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/123b_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav127a:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/127a_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav127b:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/127b_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav129:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/129_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav131:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/131_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav133:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/133_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav136:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/136_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav142:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/142_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav143:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/143_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav150:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/150_CLGSETP.config
-#    tag: vav
-#
+
+  platform.vav102:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/102_CLGSETP.config
+    tag: vav
+
+  platform.vav118:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/118_CLGSETP.config
+    tag: vav
+
+  platform.vav119:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/119_CLGSETP.config
+    tag: vav
+
+  platform.vav120:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/120_CLGSETP.config
+    tag: vav
+
+  platform.vav121:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/121_CLGSETP.config
+    tag: vav
+
+  platform.vav123a:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/123a_CLGSETP.config
+    tag: vav
+
+  platform.vav123b:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/123b_CLGSETP.config
+    tag: vav
+
+  platform.vav127a:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/127a_CLGSETP.config
+    tag: vav
+
+  platform.vav127b:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/127b_CLGSETP.config
+    tag: vav
+
+  platform.vav129:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/129_CLGSETP.config
+    tag: vav
+
+  platform.vav131:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/131_CLGSETP.config
+    tag: vav
+
+  platform.vav133:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/133_CLGSETP.config
+    tag: vav
+
+  platform.vav136:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/136_CLGSETP.config
+    tag: vav
+
+  platform.vav142:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/142_CLGSETP.config
+    tag: vav
+
+  platform.vav143:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/143_CLGSETP.config
+    tag: vav
+
+  platform.vav150:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/150_CLGSETP.config
+    tag: vav
 
 # Config for AHU2/VAV2
-#  platform.ahu2:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
-#    config: $CONFIG/AHU2.config
-#    tag: ahu
-#
-#  platform.vav2:
-#        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#        config: $CONFIG/002_CLGSETP.config
-#        tag: vav
+  platform.ahu2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU2.config
+    tag: ahu
+
+  platform.vav2:
+        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+        config: $CONFIG/002_CLGSETP.config
+        tag: vav
 
 # Config for AHU3/VAV3
-#  platform.ahu3:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
-#    config: $CONFIG/AHU3.config
-#    tag: ahu
-#
-#  platform.vav104:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#    config: $CONFIG/104_CLGSETP.config
-#    tag: vav
-#
-#  platform.vav105:
-#      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#      config: $CONFIG/105_CLGSETP.config
-#      tag: vav
-#
-#  platform.vav107:
-#      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#      config: $CONFIG/107_CLGSETP.config
-#      tag: vav
-#
-#  platform.vav108:
-#      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#      config: $CONFIG/108_CLGSETP.config
-#      tag: vav
-#
-#  platform.vav112:
-#      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#      config: $CONFIG/112_CLGSETP.config
-#      tag: vav
-#
-#  platform.vav116:
-#        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#        config: $CONFIG/116_CLGSETP.config
-#        tag: vav
+  platform.ahu3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU3.config
+    tag: ahu
+
+  platform.vav104:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+    config: $CONFIG/104_CLGSETP.config
+    tag: vav
+
+  platform.vav105:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/105_CLGSETP.config
+      tag: vav
+
+  platform.vav107:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/107_CLGSETP.config
+      tag: vav
+
+  platform.vav108:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/108_CLGSETP.config
+      tag: vav
+
+  platform.vav112:
+      source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+      config: $CONFIG/112_CLGSETP.config
+      tag: vav
+
+  platform.vav116:
+        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+        config: $CONFIG/116_CLGSETP.config
+        tag: vav
 
 # Config for AHU4/VAV4
-#  platform.ahu4:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
-#    config: $CONFIG/AHU4.config
-#    tag: ahu
-#
-#  platform.vav4:
-#        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-#        config: $CONFIG/004_CLGSETP.config
-#        tag: vav
+  platform.ahu4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/AHUAgent
+    config: $CONFIG/AHU4.config
+    tag: ahu
 
-# TODO: add rest of light agents
-#  platform.light129:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
-#    config: $CONFIG/129_LIGHT.config
-#    tag: light
-#
-#  platform.uncontrol_load:
-#    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
-#    config: $CONFIG/uncontrol_load.config
-#    tag: uncontrol_load
-#
-#  platform.market:
-#    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
-#    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
-#    tag: market-service
+  platform.vav4:
+        source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
+        config: $CONFIG/004_CLGSETP.config
+        tag: vav
 
-#  platform.historian:
-#    source: $VOLTTRON_ROOT/services/core/SQLHistorian
-#    config: $CONFIG/sqlhistorian.config
-#    tag: sqlite-db
+  platform.light129:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/129_LIGHT.config
+    tag: light
+
+  platform.light150:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/150_LIGHT.config
+    tag: light
+
+  platform.light136:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/136_LIGHT.config
+    tag: light
+
+  platform.light142:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/142_LIGHT.config
+    tag: light
+
+  platform.light143:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/143_LIGHT.config
+    tag: light
+
+  platform.light133:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/133_LIGHT.config
+    tag: light
+
+  platform.light131:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/131_LIGHT.config
+    tag: light
+
+  platform.light127B:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/127B_LIGHT.config
+    tag: light
+
+  platform.light127A:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/127A_LIGHT.config
+    tag: light
+
+  platform.light123A:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/123A_LIGHT.config
+    tag: light
+
+  platform.light123B:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/123B_LIGHT.config
+    tag: light
+
+  platform.light120:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/120_LIGHT.config
+    tag: light
+
+  platform.light119:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/119_LIGHT.config
+    tag: light
+
+  platform.light118:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/118_LIGHT.config
+    tag: light
+
+  platform.light116:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/116_LIGHT.config
+    tag: light
+
+  platform.light112:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/112_LIGHT.config
+    tag: light
+
+  platform.light108:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/108_LIGHT.config
+    tag: light
+
+  platform.light107:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/107_LIGHT.config
+    tag: light
+
+  platform.light105:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/105_LIGHT.config
+    tag: light
+
+  platform.light104:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/104_LIGHT.config
+    tag: light
+
+  platform.light102:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/102_LIGHT.config
+    tag: light
+
+  platform.uncontrol_load:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+    config: $CONFIG/uncontrol_load.config
+    tag: uncontrol_load
+
+  platform.market:
+    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
+    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
+    tag: market-service
 
   tns.building_agent:
     source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
@@ -204,5 +302,3 @@ agents:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/forwarder.config
     tag: forwarder
-
-

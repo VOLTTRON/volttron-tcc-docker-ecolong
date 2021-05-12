@@ -18,7 +18,7 @@ VOLTTRON_CTL_CMD = "volttron-ctl"
 VOLTTRON_CFG_CMD = "vcfg"
 INSTALL_PATH = "{}/scripts/install-agent.py".format(VOLTTRON_ROOT)
 KEYSTORES = os.path.join(VOLTTRON_HOME, "keystores")
-AGENT_START_TIME = "90"
+AGENT_START_TIME = "10"
 
 if not VOLTTRON_HOME:
     VOLTTRON_HOME = "/home/volttron/.volttron"
@@ -139,7 +139,6 @@ def install_agents(agents):
             install_cmd = ["python3", INSTALL_PATH]
             install_cmd.extend(["--agent-source", agent_source])
             install_cmd.extend(["--vip-identity", identity])
-            install_cmd.extend(["--start", "--priority", priority])
             install_cmd.extend(["--agent-start-time", AGENT_START_TIME])
             install_cmd.append("--force")
             install_cmd.extend(["--tag", tag])

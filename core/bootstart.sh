@@ -36,7 +36,7 @@ elif [[ $(hostname) == "largeoffice" ]]; then
   echo "alias grep-cmlo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/LargeOffice'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
 fi
 
-echo "Starting Volttron for container: $(hostname)........."
+echo "Starting Volttron for container: $(hostname)."
 volttron -vv -l /home/volttron/logs/$(hostname).volttron.log > /dev/null 2>&1 &
 disown
 sleep 10
@@ -44,15 +44,30 @@ sleep 10
 # specific startup actions for each volttron instance
 echo "Running additional startup actions for $(hostname)"
 if [[ $(hostname) == "central" ]]; then
-  vctl stop --tag forwarder
   sleep 300 # 5 minutes
-  vctl restart --tag listener
-  vctl restart --tag tns_campus tns_city
+  vctl start --tag sqlite-db listener tns_campus tns_city
   vctl start --tag forwarder
-else
-  vctl restart --tag eplus forwarder listener tns_building
+elif [[ $(hostname) == "brsw" ]]; then
+  vctl start --tag eplus
+  sleep 25
+  vctl start --tag rtu uncontrol_load market-service sqlite-db listener tns_building
+  vctl start --tag forwarder
+elif [[ $(hostname) == "building1" ]]; then
+  vctl start --tag eplus
+  sleep 40
+  vctl start --tag ahu vav light uncontrol_load market-service sqlite-db listener tns_building
+  vctl start --tag forwarder
+elif [[ $(hostname) == "smalloffice" ]]; then
+  vctl start --tag eplus
+  sleep 25
+  vctl start --tag rtu light uncontrol_load market-service sqlite-db listener tns_building
+  vctl start --tag forwarder
+elif [[ $(hostname) == "largeoffice" ]]; then
+  vctl start --tag eplus
+  sleep 16
+  vctl start --tag ahu vav light uncontrol_load market-service sqlite-db listener tns_building
+  vctl start --tag forwarder
 fi
-
 
 # Last line of for CMD must be an infinite loop or else the container will automatically exit
 while true; do sleep 15; done
