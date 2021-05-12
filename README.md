@@ -27,7 +27,9 @@ $ git submodule update --init --recursive
 2. Build image and start container
 
 ```shell
-$ docker-compose up --build
+# build the image without using cache
+$ docker-compose build --no-cache  --force-rm
+$ docker-compose up
 ```
 
 
