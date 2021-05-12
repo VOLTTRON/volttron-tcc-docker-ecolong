@@ -2,7 +2,6 @@ version: '3.4'
 
 services:
   building1:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -28,7 +27,6 @@ services:
       - ./log:/home/volttron/logs
 
   smalloffice:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -54,7 +52,6 @@ services:
       - ./log:/home/volttron/logs
 
   largeoffice:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -81,7 +78,6 @@ services:
       - volttron_largeoffice:/code/volttron
 
   brsw:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central

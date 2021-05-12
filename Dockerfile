@@ -76,8 +76,6 @@ RUN mkdir -p /code && chown $VOLTTRON_USER.$VOLTTRON_USER /code \
 
 FROM volttron_base AS volttron_core
 
-RUN ln -sf /usr/bin/pip3 /usr/bin/pip
-
 USER $VOLTTRON_USER
 COPY --chown=volttron:volttron volttron /code/volttron
 WORKDIR /code/volttron
