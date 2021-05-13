@@ -21,6 +21,9 @@ echo "Setting up aliases for debugging."
 echo "alias tlogs='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
 if [[ $(hostname) == "central" ]]; then
   {
+  # The search string for 'grep' are based on the custom topic of each service's forwarder configuration
+  # For example, for the BRSW container, 'tnc/BRSW' is a custom topic defined in BRSW's forwarder configuration key 'custom_topic_list',
+  # the config file for BRSW is located at ~<repo_root>/platform_configs/brsw/agent_configs/forwarder.config
   echo "alias grep-brsw='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BRSW'"
   echo "alias grep-b1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BUILDING1'"
   echo "alias grep-so='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/SMALL_OFFICE'"
