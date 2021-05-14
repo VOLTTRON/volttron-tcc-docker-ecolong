@@ -3,7 +3,7 @@
     "connection": {
         "type": "sqlite",
         "params": {
-            "database": "~/volttron/platform.historian.sqlite"
+            "database": "/home/data/test_new_tnt/large_office/lo.historian.sqlite"
         }
     },
     "capture_device_data": false,

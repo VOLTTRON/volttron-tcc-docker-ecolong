@@ -1,0 +1,150 @@
+# Properties to be added to the root config file
+# the properties should be ingestible for volttron
+# the values will be presented in the config file
+# as key=value
+config:
+  vip-address: tcp://172.28.5.2:22912
+  bind-web-address: http://172.28.5.2:8442
+  instance-name: smalloffice
+  message-bus: zmq
+
+# Agents dictionary to install.  The key must be a valid
+# identity for the agent to be installed correctly.
+agents:
+
+  # Each agent identity.config file should be in the configs
+  # directory and will be used to install the agent.
+  listener:
+    source: $VOLTTRON_ROOT/examples/ListenerAgent
+    config: $CONFIG/listener.config
+    tag: listener
+
+  platform.historian:
+    source: $VOLTTRON_ROOT/services/core/SQLHistorian
+    config: $CONFIG/sqlhistorian.config
+    tag: sqlite-db
+
+  platform.rtu1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu1.config
+    tag: rtu
+
+  platform.rtu2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu2.config
+    tag: rtu
+
+  platform.rtu3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu3.config
+    tag: rtu
+
+  platform.rtu4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu4.config
+    tag: rtu
+
+  platform.rtu5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu5.config
+    tag: rtu
+
+  platform.rtu6:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu6.config
+    tag: rtu
+
+  platform.rtu7:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu7.config
+    tag: rtu
+
+  platform.rtu8:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu8.config
+    tag: rtu
+
+  platform.rtu9:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu9.config
+    tag: rtu
+
+  platform.rtu10:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/RTUAgent
+    config: $CONFIG/rtu10.config
+    tag: rtu
+
+  platform.light1:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting1.config
+    tag: light
+
+  platform.light2:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting2.config
+    tag: light
+
+  platform.light3:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting3.config
+    tag: light
+
+  platform.light4:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting4.config
+    tag: light
+
+  platform.light5:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting5.config
+    tag: light
+
+  platform.light6:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting6.config
+    tag: light
+
+  platform.light7:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting7.config
+    tag: light
+
+  platform.light8:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting8.config
+    tag: light
+
+  platform.light9:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting9.config
+    tag: light
+
+  platform.light10:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/LightingAgent
+    config: $CONFIG/lighting10.config
+    tag: light
+
+  platform.uncontrol_load:
+    source: $VOLTTRON_ROOT/volttron/MarketAgents/UnControlLoadAgent
+    config: $CONFIG/uncontrol_load.config
+    tag: uncontrol_load
+
+  platform.market:
+    source: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent
+    config: $VOLTTRON_ROOT/volttron/MixMarketServiceAgent/config
+    tag: market-service
+
+  tns.building_agent:
+    source: $VOLTTRON_ROOT/volttron/TNS_building_Agent
+    config: $CONFIG/SMALL_OFFICE.config
+    tag: tns_building
+
+  platform.actuator:
+    source: $VOLTTRON_ROOT/volttron/pnnl/energyplusagent
+    config: $CONFIG/ep_small_office.config
+    tag: eplus
+
+  forwarder.tns_pnnl:
+    source: $VOLTTRON_ROOT/services/core/ForwardHistorian
+    config: $CONFIG/forwarder.config
+    tag: forwarder
