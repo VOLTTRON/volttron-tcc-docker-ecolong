@@ -5,7 +5,12 @@
 
 # Notes
 
-* The volttron source code used is pinned to [`releases/8.x`](https://github.com/VOLTTRON/volttron/tree/releases/8.x)
+## Git Submodules
+* The volttron submodule is pinned to [`releases/8.x`](https://github.com/VOLTTRON/volttron/tree/releases/8.x)
+* The volttron-GS submodule is pinned to [`main`](https://https://github.com/VOLTTRON/volttron-GS/tree/main)
+* Over time, the commits on the aforementioned submodules can change. To ensure that you get the latest commits for those submodules, run the following command: ```git submodule update --remote --merge``` This command will fetch the latest changes from upstream in each submodule, merge them in, and check out the latest revision of the submodule.
+
+## Docker
 * The docker image uses a minimal base image of Ubuntu 20.04 (focal)
 * A pair of logs are created for each volttron instance. One log is dedicated to the platform configuration actions in core/setup-platform.py. That log is named <instance name>-<date>.log. It is stored in log/
   The other log captures all the log output when starting the volttron instance. That log is named <instance name>.volttron.log and is also stored in log/
@@ -67,9 +72,6 @@ volttron@building1:~$
 
 Aliases have been added to each container to aid in debugging and viewing logs. 
 
-**Note: To use these aliases in the container, first run the following command: 
-```source "${VOLTTRON_USER_HOME}/.bashrc"```**
-
 All containers have the following aliases:
 
 ```shell
@@ -79,6 +81,14 @@ vstat
 # tail the volttron logs
 tlogs
 ``` 
+
+Also, all containers have an environment variable, $VLOG, which is the path to each container's volttron logs. You can use $VLOG to search for certain strings in volttron.log. For example, if we want to search for "ERROR" in the 'brsw' container's volttron.log, we run the following:
+
+```
+$ cat $VLOG | grep ERROR -a
+```
+
+will search for the string "ERROR", case sensitive, in home/volttron/volttron.log
 
 The following containers have their own specific aliases
 ### 'central'

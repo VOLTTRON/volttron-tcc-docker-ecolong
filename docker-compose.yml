@@ -75,7 +75,7 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-      - volttron_largeoffice:/code/volttron
+        #      - volttron_largeoffice:/code/volttron
 
   brsw:
     image: volttron/volttron:tcc
@@ -101,7 +101,7 @@ services:
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-      - volttron_brsw:/code/volttron
+        #- volttron_brsw:/code/volttron
 
   central:
     build: .
