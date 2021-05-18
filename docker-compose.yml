@@ -75,7 +75,6 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-        #      - volttron_largeoffice:/code/volttron
 
   brsw:
     image: volttron/volttron:tcc
@@ -101,7 +100,6 @@ services:
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-        #- volttron_brsw:/code/volttron
 
   central:
     build: .
@@ -136,8 +134,3 @@ networks:
        - subnet: 172.28.0.0/16
          ip_range: 172.28.5.0/24
 
-volumes:
-  volttron_largeoffice:
-    name: tcc_volttron_largeoffice
-  volttron_brsw:
-    name: tcc_volttron_brsw

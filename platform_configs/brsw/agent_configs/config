@@ -1,3 +1,0 @@
-[volttron]
-vip-address = tcp://127.0.0.1:23916
-instance-name = "simulation_brsw"

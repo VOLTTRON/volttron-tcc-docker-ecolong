@@ -20,6 +20,7 @@ echo "Setup of Volttron platform is complete."
 echo "Setting up aliases for debugging."
 {
   echo "alias tlogs='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log'"
+  echo "alias tlogsERROR='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep ERROR -a'"
   echo "alias grep-ERROR='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep ERROR -a'"
   echo "alias grep-error='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep error -a'"
   echo "alias grep-cycle='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep start_new_cycle -a'"
