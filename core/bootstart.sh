@@ -18,31 +18,57 @@ fi
 echo "Setup of Volttron platform is complete."
 
 echo "Setting up aliases for debugging."
-echo "alias tlogs='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+{
+  echo "alias tlogs='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log'"
+  echo "alias tlogsERROR='tail -f $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep ERROR -a'"
+  echo "alias grep-ERROR='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep ERROR -a'"
+  echo "alias grep-error='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep error -a'"
+  echo "alias grep-cycle='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep start_new_cycle -a'"
+} >> "$VOLTTRON_USER_HOME/.bash_aliases"
+
+echo "export VLOG='$VOLTTRON_USER_HOME/logs/$(hostname).volttron.log'" >> .bashrc
+
 if [[ $(hostname) == "central" ]]; then
   {
-  echo "alias grep-brsw='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BRSW'"
-  echo "alias grep-b1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BUILDING1'"
-  echo "alias grep-so='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/SMALL_OFFICE'"
-  echo "alias grep-lo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/LargeOffice'"
+  # The search string for 'grep' are based on the custom topic of each service's forwarder configuration
+  # For example, for the BRSW container, 'tnc/BRSW' is a custom topic defined in BRSW's forwarder configuration key 'custom_topic_list',
+  # the config file for BRSW is located at ~<repo_root>/platform_configs/brsw/agent_configs/forwarder.config
+  echo "alias grep-brsw='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BRSW -a'"
+  echo "alias grep-b1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/BUILDING1 -a'"
+  echo "alias grep-so='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/SMALL_OFFICE -a'"
+  echo "alias grep-lo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/LargeOffice -a'"
+  echo "alias vrestart='vctl start --tag tns*  sqlite-db forwarder listener'"
   } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "brsw" ]]; then
-  echo "alias grep-cmbr='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BRSW'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+  {
+  echo "alias grep-cmbr='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BRSW -a'"
+  echo "alias vrestart='vctl start --tag rtu tns* market-service sqlite-db forwarder listener'"
+  } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "building1" ]]; then
-  echo "alias grep-cmb1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BUILDING1'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+  
+  { 
+  echo "alias grep-cmb1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BUILDING1 -a'"
+  echo "alias vrestart='vctl start --tag vav ahu light uncontrol_load tns* market-service sqlite-db forwarder listener'"
+  } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "smalloffice" ]]; then
-  echo "alias grep-cmso='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/SMALL_OFFICE'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+  {
+  echo "alias grep-cmso='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/SMALL_OFFICE -a'"
+  echo "alias vrestart='vctl start --tag rtu tns* light market-service sqlite-db forwarder listener'"
+  } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "largeoffice" ]]; then
-  echo "alias grep-cmlo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/LargeOffice'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
+  {
+  echo "alias grep-cmlo='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/LargeOffice -a'"
+  echo "alias vrestart='vctl start --tag vav ahu light uncontrol_load tns* market-service sqlite-db forwarder listener'"
+  } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 fi
 
-echo "Starting Volttron for container: $(hostname)."
+echo "Starting Volttron for container: $(hostname)"
 volttron -vv -l /home/volttron/logs/$(hostname).volttron.log > /dev/null 2>&1 &
 disown
 sleep 10
 
 # specific startup actions for each volttron instance
-echo "Running additional startup actions for $(hostname)"
+echo "Running additional startup actions for container: $(hostname)"
 if [[ $(hostname) == "central" ]]; then
   sleep 300 # 5 minutes
   vctl start --tag sqlite-db listener tns_campus tns_city

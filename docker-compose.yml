@@ -2,7 +2,6 @@ version: '3.4'
 
 services:
   building1:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -28,7 +27,6 @@ services:
       - ./log:/home/volttron/logs
 
   smalloffice:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -54,7 +52,6 @@ services:
       - ./log:/home/volttron/logs
 
   largeoffice:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -78,10 +75,8 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-      - volttron_largeoffice:/code/volttron
 
   brsw:
-    build: .
     image: volttron/volttron:tcc
     depends_on:
       - central
@@ -105,7 +100,6 @@ services:
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-      - volttron_brsw:/code/volttron
 
   central:
     build: .
@@ -140,8 +134,3 @@ networks:
        - subnet: 172.28.0.0/16
          ip_range: 172.28.5.0/24
 
-volumes:
-  volttron_largeoffice:
-    name: tcc_volttron_largeoffice
-  volttron_brsw:
-    name: tcc_volttron_brsw

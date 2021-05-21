@@ -17,12 +17,14 @@ ENV VOLTTRON_USER=volttron
 ENV USER_PIP_BIN=${VOLTTRON_USER_HOME}/.local/bin
 ENV RMQ_ROOT=${VOLTTRON_USER_HOME}/rabbitmq_server
 ENV RMQ_HOME=${RMQ_ROOT}/rabbitmq_server-3.7.7
+
+RUN apt-get update && apt-get install -y apt-utils locales locales-all
+RUN locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV TZ=America/Los_Angeles
 
 USER root
-
 # ubuntu bioinic image does not come with /etc/timezone or /etc/localtime, resulting in UTC warnings on every vctl command
 # need to manually add tzdata and configure timezone here
 RUN echo $TZ > /etc/timezone
@@ -63,8 +65,6 @@ RUN wget https://github.com/NREL/EnergyPlus/releases/download/v8.5.0/EnergyPlus-
 # The printf command mimics the manual action of entering "yes" followed by two "enter" commands to accept the default configuration
 RUN printf 'y\n\n\n\n\n' | bash EnergyPlus-8.5.0-c87e61b44b-Linux-x86_64.sh
 
-RUN locale-gen en_US.UTF-8
-
 RUN id -u $VOLTTRON_USER &>/dev/null || adduser --disabled-password --gecos "" $VOLTTRON_USER
 
 RUN mkdir -p /code && chown $VOLTTRON_USER.$VOLTTRON_USER /code \
@@ -75,8 +75,6 @@ RUN mkdir -p /code && chown $VOLTTRON_USER.$VOLTTRON_USER /code \
 ############################################
 
 FROM volttron_base AS volttron_core
-
-RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
 USER $VOLTTRON_USER
 COPY --chown=volttron:volttron volttron /code/volttron

@@ -62,22 +62,22 @@ agents:
 
   platform.vav123a:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/123a_CLGSETP.config
+    config: $CONFIG/123A_CLGSETP.config
     tag: vav
 
   platform.vav123b:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/123b_CLGSETP.config
+    config: $CONFIG/123B_CLGSETP.config
     tag: vav
 
   platform.vav127a:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/127a_CLGSETP.config
+    config: $CONFIG/127A_CLGSETP.config
     tag: vav
 
   platform.vav127b:
     source: $VOLTTRON_ROOT/volttron/MarketAgents/VAVAgent
-    config: $CONFIG/127b_CLGSETP.config
+    config: $CONFIG/127B_CLGSETP.config
     tag: vav
 
   platform.vav129:
