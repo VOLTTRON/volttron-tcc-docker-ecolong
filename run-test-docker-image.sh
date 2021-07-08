@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# install jq for testing
-sudo apt-get install jq -y
+
 start=$(date +%s)
 
 
@@ -15,7 +14,7 @@ exit_cleanly() {
 
 exit_test() {
   echo -e $1
-  docker logs --tail 25 volttron1
+  docker logs --tail 25 building1
   docker-compose down
   exit_cleanly
 }
@@ -34,7 +33,7 @@ group='volttron' # group name of the image; will be used to name the image <grou
 tag='tcc' # image tag; will be used to name the image <source image>:<tag>
 while getopts 'sw:g:t:' flag; do
   case "${flag}" in
-    s) skip_build=true ;;
+    s) skip_build=false ;;
     w) wait="$OPTARG" ;;
     g) group="$OPTARG" ;;
     t) tag="$OPTARG" ;;
