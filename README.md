@@ -12,7 +12,7 @@
 * Storage: 40 GB
 
 ## Git Submodules
-* The volttron submodule is pinned to [`releases/8.x`](https://github.com/VOLTTRON/volttron/tree/releases/8.x)
+* The volttron submodule is pinned to [`develop`](https://github.com/VOLTTRON/volttron/tree/develop)
 * The volttron-GS submodule is pinned to [`main`](https://https://github.com/VOLTTRON/volttron-GS/tree/main)
 * Over time, the commits on the aforementioned submodules can change. To ensure that you get the latest commits for those submodules, run the following command: ```git submodule update --remote --merge``` This command will fetch the latest changes from upstream in each submodule, merge them in, and check out the latest revision of the submodule.
 
@@ -29,7 +29,7 @@
 
 # Quickstart
 
-NOTE: If you don't want to build the image locally, you can pull the image from DockerHub; run the following commaned: ```docker pull bonicim/volttron:tcc```
+NOTE: If you don't want to build the image locally, you can pull the image from DockerHub; run the following command: ```docker pull bonicim/volttron:tcc```
 This action is optional and is an alternative to the steps below. 
 
 1. Initialize the submodules; for details see .gitmodules
