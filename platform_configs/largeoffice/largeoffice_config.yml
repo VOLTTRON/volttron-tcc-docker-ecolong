@@ -4,7 +4,7 @@
 # as key=value
 config:
   vip-address: tcp://172.28.5.3:22913
-  bind-web-address: http://172.28.5.3:8443
+  bind-web-address: https://172.28.5.3:8443
   instance-name: largeoffice
   message-bus: zmq
 

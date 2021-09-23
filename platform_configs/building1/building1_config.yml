@@ -4,7 +4,7 @@
 # as key=value
 config:
   vip-address: tcp://172.28.5.1:22911
-  bind-web-address: http://172.28.5.1:8441
+  bind-web-address: https://172.28.5.1:8441
   instance-name: building1
   message-bus: zmq
 
