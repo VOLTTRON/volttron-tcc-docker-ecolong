@@ -35,15 +35,14 @@ This action is optional and is an alternative to the steps below.
 1. Initialize the submodules; for details see .gitmodules
 
 ```shell
-$ git submodule update --init --recursive 
+git submodule update --init --recursive 
 ```
 
-2. Build image and start container
+2. Build image without using cache and start container
 
 ```shell
-# build the image without using cache
-$ docker-compose build --no-cache  --force-rm
-$ docker-compose up
+docker-compose build --no-cache  --force-rm
+docker-compose up
 ```
 
 3. To view the logs of a service, enter inside the container and tail the logs. The command to tail the logs works 
@@ -84,25 +83,25 @@ All containers have the following aliases:
 
 ```shell
 # show status of all agents, i.e. 'vctl status'
-volttron@building1:~$ vstat
+vstat
 
 # tail the volttron logs
-volttron@building1:~$ tlogs
+tlogs
 
 # tail the volttron logs and grep for 'ERROR'; this is helpful for debugging
-volttron@building1:~$ tlogsERROR
+tlogsERROR
 
 # Search for ERROR in the logs
-volttron@building1:~$ grep-ERROR
+grep-ERROR
 
 # restart all agents except EnergyPlus
-volttron@building1:~$ vrestart
+vrestart
 ``` 
 
 Also, all containers have an environment variable, $VLOG, which is the path to each container's volttron logs. You can use $VLOG to search for certain strings in volttron.log. For example, if we want to search for "ERROR" in the 'brsw' container's volttron.log, we run the following:
 
 ```shell
-volttron@building1:~$ cat $VLOG | grep ERROR -a
+cat $VLOG | grep ERROR -a
 ```
 
 will search for the string "ERROR", case sensitive, in home/volttron/volttron.log

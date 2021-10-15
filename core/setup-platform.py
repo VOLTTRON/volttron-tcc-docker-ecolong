@@ -3,8 +3,11 @@ import os
 import sys
 import yaml
 
+from shutil import copy
 from time import sleep
 from volttron.platform import set_home, certs
+from volttron.platform.agent.known_identities import PLATFORM_WEB
+from volttron.utils import get_hostname
 from slogger import get_logger
 
 slogger = get_logger("setup-platform", os.environ['LOG_PREFIX'])
@@ -53,6 +56,17 @@ def get_platform_configurations(platform_config_path):
 
 
 def configure_platform(platform_cfg):
+    # install required volttdon dependencies, wheel and pyzmq, because they are not required in setup.py
+    from requirements import option_requirements as opt_reqs
+    for req in opt_reqs:
+        package, options = req
+        install_cmd = ["pip3", "install", "--no-deps"]
+        if options:
+            install_cmd.append("--install-option")
+            install_cmd.extend(options)
+        install_cmd.append(package)
+        subprocess.check_call(install_cmd)
+
     # install web dependencies if web-enabled
     bind_web_address = platform_cfg.get("bind-web-address", None)
     if bind_web_address is not None:
@@ -77,6 +91,41 @@ def configure_platform(platform_cfg):
                 fout.write("[volttron]\n")
                 for key, value in platform_cfg.items():
                     fout.write("{}={}\n".format(key.strip(), value.strip()))
+
+    print("Creating CA Certificate...")
+    crts = certs.Certs()
+    data = {
+        "C": "US",
+        "ST": "WA",
+        "L": "Richmond",
+        "O": "PNNL",
+        "OU": "Volttron",
+        "CN": f"{platform_cfg.get('instance-name')}-root-ca",
+    }
+    crts.create_root_ca(overwrite=False, **data)
+    copy(crts.cert_file(crts.root_ca_name), crts.cert_file(crts.trusted_ca_name))
+
+    print("Creating new web server certificate.")
+    print(
+        "Creating and signing new certificate using the newly created CA certificate."
+    )
+    name = f"{platform_cfg.get('instance-name')}-{PLATFORM_WEB}"
+    crts.create_signed_cert_files(
+        name=name + "-server",
+        cert_type="server",
+        ca_name=crts.root_ca_name,
+        fqdn=get_hostname(),
+    )
+    master_web_cert = os.path.join(
+        VOLTTRON_HOME, "certificates/certs/", name + "-server.crt"
+    )
+    master_web_key = os.path.join(
+        VOLTTRON_HOME, "certificates/private/", name + "-server.pem"
+    )
+    print("Writing ssl cert and key paths to config.")
+    with open(os.path.join(cfg_path), "a") as fout:
+        fout.write(f"web-ssl-cert = {master_web_cert}\n")
+        fout.write(f"web-ssl-key = {master_web_key}\n")
 
 
 def install_agents(agents):

@@ -4,7 +4,8 @@
 # as key=value
 config:
   vip-address: tcp://172.28.5.4:22914
-  bind-web-address: http://172.28.5.4:8444
+  bind-web-address: https://172.28.5.4:8444
+  volttron-central-address: https://172.28.5.4:8444
   instance-name: brsw
   message-bus: zmq
 
@@ -73,3 +74,8 @@ agents:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/forwarder.config
     tag: forwarder
+
+  volttron.central:
+    source: $VOLTTRON_ROOT/services/core/VolttronCentral
+    config: $VOLTTRON_ROOT/services/core/VolttronCentral/config
+    tag: central
