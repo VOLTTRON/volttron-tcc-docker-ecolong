@@ -25,7 +25,7 @@ ENV LC_ALL=en_US.UTF-8
 ENV TZ=America/Los_Angeles
 
 USER root
-# ubuntu bioinic image does not come with /etc/timezone or /etc/localtime, resulting in UTC warnings on every vctl command
+# ubuntu bionic image does not come with /etc/timezone or /etc/localtime, resulting in UTC warnings on every vctl command
 # need to manually add tzdata and configure timezone here
 RUN echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y tzdata

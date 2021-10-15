@@ -56,6 +56,17 @@ def get_platform_configurations(platform_config_path):
 
 
 def configure_platform(platform_cfg):
+    # install required volttdon dependencies, wheel and pyzmq, because they are not required in setup.py
+    from requirements import option_requirements as opt_reqs
+    for req in opt_reqs:
+        package, options = req
+        install_cmd = ["pip3", "install", "--no-deps"]
+        if options:
+            install_cmd.append("--install-option")
+            install_cmd.extend(options)
+        install_cmd.append(package)
+        subprocess.check_call(install_cmd)
+
     # install web dependencies if web-enabled
     bind_web_address = platform_cfg.get("bind-web-address", None)
     if bind_web_address is not None:
