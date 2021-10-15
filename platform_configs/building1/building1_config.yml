@@ -5,6 +5,7 @@
 config:
   vip-address: tcp://172.28.5.1:22911
   bind-web-address: https://172.28.5.1:8441
+  volttron-central-address: https://172.28.5.1:8441
   instance-name: building1
   message-bus: zmq
 
@@ -302,3 +303,8 @@ agents:
     source: $VOLTTRON_ROOT/services/core/ForwardHistorian
     config: $CONFIG/forwarder.config
     tag: forwarder
+
+  volttron.central:
+    source: $VOLTTRON_ROOT/services/core/VolttronCentral
+    config: $VOLTTRON_ROOT/services/core/VolttronCentral/config
+    tag: central
