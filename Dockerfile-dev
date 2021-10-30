@@ -67,8 +67,8 @@ RUN printf 'y\n\n\n\n\n' | bash EnergyPlus-8.5.0-c87e61b44b-Linux-x86_64.sh
 
 RUN id -u $VOLTTRON_USER &>/dev/null || adduser --disabled-password --gecos "" $VOLTTRON_USER
 
-RUN chown $VOLTTRON_USER.$VOLTTRON_USER /code \
-  && echo "export PATH=/home/volttron/.local/bin:$PATH" > /home/volttron/.bashrc
+RUN mkdir -p /code && chown $VOLTTRON_USER.$VOLTTRON_USER /code \
+    && echo "export PATH=/home/volttron/.local/bin:$PATH" > /home/volttron/.bashrc
 
 ############################################
 # ENDING volttron_base image
@@ -76,16 +76,15 @@ RUN chown $VOLTTRON_USER.$VOLTTRON_USER /code \
 
 FROM volttron_base AS volttron_core
 
+# make the volttron home directory
+RUN mkdir $VOLTTRON_HOME && chown $VOLTTRON_USER.$VOLTTRON_USER $VOLTTRON_HOME
+
+# copy over volttron repo
 USER $VOLTTRON_USER
 COPY --chown=volttron:volttron volttron /code/volttron
 WORKDIR /code/volttron
 RUN pip3 install -e . --user
 RUN echo "package installed at `date`"
-
-USER root
-RUN mkdir /startup $VOLTTRON_HOME && \
-    chown $VOLTTRON_USER.$VOLTTRON_USER $VOLTTRON_HOME
-RUN chmod +x /startup/*
 
 ############################################
 # ENDING volttron_core image
@@ -98,7 +97,7 @@ RUN pip3 install pandas sympy transitions scipy patsy decorators
 RUN echo "alias vstat='vctl status'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
 RUN echo "source ~/.bash_aliases" >> "$VOLTTRON_USER_HOME/.bashrc"
 
-RUN chown $VOLTTRON_USER.$VOLTTRON_USER /code/volttron/volttron/pnnl
+COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl
 COPY --chown=volttron:volttron volttron-GS/eplus /code/volttron/volttron/pnnl
 COPY --chown=volttron:volttron source/eplus /code/volttron/volttron/eplus
 
@@ -127,5 +126,3 @@ USER root
 WORKDIR ${VOLTTRON_USER_HOME}
 ENTRYPOINT ["/startup/entrypoint.sh"]
 CMD ["/startup/bootstart.sh"]
-
-

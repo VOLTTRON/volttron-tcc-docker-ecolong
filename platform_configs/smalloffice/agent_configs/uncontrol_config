@@ -27,7 +27,7 @@
 		"LIGHTING/TS11": {
 			"points": ["Power"],
 			"conversion": "Power*(0.001)"
-		},		
+		},
 		"LIGHTING/TE12": {
 			"points": ["Power"],
 			"conversion": "Power*(0.001)"
@@ -43,7 +43,7 @@
 		"LIGHTING/TC15": {
 			"points": ["Power"],
 			"conversion": "Power*(0.001)"
-		},		
+		},
 		"HP1": {
 			"points": ["Power"],
 			"conversion": "Power*(0.001)"

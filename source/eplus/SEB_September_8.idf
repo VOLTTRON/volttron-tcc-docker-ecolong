@@ -15976,11 +15976,11 @@ Output:Variable,
     currentMonthV,            !- Name
     currentMonthV,            !- EMS Variable Name
     Averaged,                !- Type of Data in Variable
-    SystemTimestep;            !- Update Frequency	
+    SystemTimestep;            !- Update Frequency
   EnergyManagementSystem:ProgramCallingManager,
     GettimeV,                 !- Name
     EndOfSystemTimestepBeforeHVACReporting,  !- EnergyPlus Model Calling Point
-    GetTimelagV;              !- Program Name 1	
+    GetTimelagV;              !- Program Name 1
 
 
   EnergyManagementSystem:Program,
@@ -15988,7 +15988,7 @@ Output:Variable,
     SET currentMinuteV = Minute,  !- Program Line 1
     SET currentMonthV = Month,!- Program Line 2
     SET currentDayOfMonthV = DayOfMonth,  !- <none>
-    Set currentHourV = Hour;  !- <none>	
+    Set currentHourV = Hour;  !- <none>
 
   EnergyManagementSystem:GlobalVariable,
     currentMinuteV;           !- Erl Variable 1 Name
@@ -16006,4 +16006,4 @@ Output:Variable,
 !Hour (0-23)
 
   EnergyManagementSystem:GlobalVariable,
-    currentHourV;             !- Erl Variable 1 Name	
+    currentHourV;             !- Erl Variable 1 Name

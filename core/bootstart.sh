@@ -45,8 +45,8 @@ elif [[ $(hostname) == "brsw" ]]; then
   echo "alias vrestart='vctl start --tag rtu tns* market-service sqlite-db forwarder listener'"
   } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "building1" ]]; then
-  
-  { 
+
+  {
   echo "alias grep-cmb1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BUILDING1 -a'"
   echo "alias vrestart='vctl start --tag vav ahu light uncontrol_load tns* market-service sqlite-db forwarder listener'"
   } >> "$VOLTTRON_USER_HOME/.bash_aliases"

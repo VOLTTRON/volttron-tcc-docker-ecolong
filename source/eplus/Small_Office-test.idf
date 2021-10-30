@@ -10102,9 +10102,9 @@ EnergyManagementSystem:Sensor,
 EnergyManagementSystem:Sensor,
     FanOn,        !- Name
     Fans D1,  !- Output:Variable or Output:Meter Index Key Name
-    Schedule Value;          !- Output:Variable or Output:Meter Name	
+    Schedule Value;          !- Output:Variable or Output:Meter Name
 
-	
+
 EnergyManagementSystem:Sensor,
     CoolingSetpoint1,        !- Name
     South Perim Spc TS11_Cool 1/0,  !- Output:Variable or Output:Meter Index Key Name
@@ -10440,7 +10440,7 @@ EnergyManagementSystem:Program,
     SET C_set1=1,            !- A22
     ENDIF,                   !- A23
     ENDIF,                   !- A24
-    ENDIF,                   !- A24	
+    ENDIF,                   !- A24
     IF FanOn<1,
     SET Mode_1=2,
     SET C_set1=0,
@@ -10471,7 +10471,7 @@ EnergyManagementSystem:Program,
     SET C_set2=1,            !- A22
     ENDIF,                   !- A23
     ENDIF,                   !- A24
-    ENDIF,                   !- A24	
+    ENDIF,                   !- A24
     IF FanOn<1,
     SET Mode_2=2,
     SET C_set2=0,
@@ -11788,4 +11788,3 @@ Output:Meter:MeterFileOnly,Gas:Facility,Hourly;
 
 Output:SQLite,
     SimpleAndTabular;        !- Option Type
-

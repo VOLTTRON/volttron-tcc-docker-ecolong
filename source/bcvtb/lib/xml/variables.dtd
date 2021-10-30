@@ -9,4 +9,3 @@
 <!ATTLIST EnergyPlus actuator CDATA #IMPLIED>
 <!ATTLIST EnergyPlus variable CDATA #IMPLIED>
 <!ATTLIST variable source (EnergyPlus|Ptolemy) #REQUIRED>
-

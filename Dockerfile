@@ -76,20 +76,19 @@ RUN mkdir -p /code && chown $VOLTTRON_USER.$VOLTTRON_USER /code \
 
 FROM volttron_base AS volttron_core
 
+# copy over /core, i.e. the custom startup scripts for this image
+RUN mkdir /startup $VOLTTRON_HOME && \
+    chown $VOLTTRON_USER.$VOLTTRON_USER $VOLTTRON_HOME
+COPY ./core /startup
+RUN chmod +x /startup/*
+
+# copy over volttron repo
 USER $VOLTTRON_USER
 COPY --chown=volttron:volttron volttron /code/volttron
 WORKDIR /code/volttron
 RUN pip3 install -e . --user
 RUN echo "package installed at `date`"
 
-USER root
-RUN mkdir /startup $VOLTTRON_HOME && \
-    chown $VOLTTRON_USER.$VOLTTRON_USER $VOLTTRON_HOME
-COPY ./core/entrypoint.sh /startup/entrypoint.sh
-COPY ./core/bootstart.sh /startup/bootstart.sh
-COPY ./core/setup-platform.py /startup/setup-platform.py
-COPY ./core/slogger.py /startup/slogger.py
-RUN chmod +x /startup/*
 
 ############################################
 # ENDING volttron_core image
@@ -98,9 +97,6 @@ FROM volttron_core AS volttron_tcc
 ARG BUILDINGS
 
 USER $VOLTTRON_USER
-# TODO: try to install web dependencies here instead of in core/setup-platform.py
-#WORKDIR /code/volttron
-#RUN pip3 install <the web dependencies in requirements.py>
 RUN pip3 install pandas sympy transitions scipy patsy decorators
 RUN echo "alias vstat='vctl status'" >> "$VOLTTRON_USER_HOME/.bash_aliases"
 RUN echo "source ~/.bash_aliases" >> "$VOLTTRON_USER_HOME/.bashrc"
@@ -134,5 +130,3 @@ USER root
 WORKDIR ${VOLTTRON_USER_HOME}
 ENTRYPOINT ["/startup/entrypoint.sh"]
 CMD ["/startup/bootstart.sh"]
-
-

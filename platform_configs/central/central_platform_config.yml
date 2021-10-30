@@ -59,5 +59,3 @@ agents:
     source: $VOLTTRON_ROOT/services/core/VolttronCentral
     config: $VOLTTRON_ROOT/services/core/VolttronCentral/config
     tag: central
-
-

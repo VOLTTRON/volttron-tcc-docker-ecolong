@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   building1:
-    image: volttron/volttron:tcc
+    image: volttron/volttron:tcc-dev
     depends_on:
       - central
     container_name: building1
@@ -25,9 +25,11 @@ services:
       - ./platform_configs/building1/building1_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
+      - ./core:/startup
+
 
   smalloffice:
-    image: volttron/volttron:tcc
+    image: volttron/volttron:tcc-dev
     depends_on:
       - central
     container_name: smalloffice
@@ -50,9 +52,10 @@ services:
       - ./platform_configs/smalloffice/smalloffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
+      - ./core:/startup
 
   largeoffice:
-    image: volttron/volttron:tcc
+    image: volttron/volttron:tcc-dev
     depends_on:
       - central
     container_name: largeoffice
@@ -75,9 +78,10 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
+      - ./core:/startup
 
   brsw:
-    image: volttron/volttron:tcc
+    image: volttron/volttron:tcc-dev
     depends_on:
       - central
     container_name: brsw
@@ -100,9 +104,13 @@ services:
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
+      - ./core:/startup
 
   central:
-    image: volttron/volttron:tcc
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    image: volttron/volttron:tcc-dev
     container_name: central
     hostname: central
     networks:
@@ -123,12 +131,7 @@ services:
       - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./log:/home/volttron/logs
-      - ./volttron:/code/volttron
-      - ./core/entrypoint.sh:/startup/entrypoint.sh
-      - ./core/bootstart.sh:/startup/bootstart.sh
-      - ./core/setup-platform.py:/startup/setup-platform.py
-      - ./core/slogger.py:/startup/slogger.py
-      - ./volttron-GS/pnnl /code/volttron/volttron/pnnl
+      - ./core:/startup
 
 networks:
   tcc_network:
@@ -138,4 +141,3 @@ networks:
      config:
        - subnet: 172.28.0.0/16
          ip_range: 172.28.5.0/24
-

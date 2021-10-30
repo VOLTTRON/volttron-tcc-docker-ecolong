@@ -10,7 +10,7 @@ from volttron.platform.agent.known_identities import PLATFORM_WEB
 from volttron.utils import get_hostname
 from slogger import get_logger
 
-slogger = get_logger("setup-platform", os.environ['LOG_PREFIX'])
+slogger = get_logger("setup-platform", os.environ["LOG_PREFIX"])
 
 # The environment variables must be set or we have big issues
 VOLTTRON_ROOT = os.environ["VOLTTRON_ROOT"]
@@ -55,9 +55,10 @@ def get_platform_configurations(platform_config_path):
     return config, agents, platform_cfg
 
 
-def configure_platform(platform_cfg):
-    # install required volttdon dependencies, wheel and pyzmq, because they are not required in setup.py
+def _install_required_deps():
+    # install required volttron dependencies, wheel and pyzmq, because they are not required in setup.py
     from requirements import option_requirements as opt_reqs
+
     for req in opt_reqs:
         package, options = req
         install_cmd = ["pip3", "install", "--no-deps"]
@@ -67,31 +68,28 @@ def configure_platform(platform_cfg):
         install_cmd.append(package)
         subprocess.check_call(install_cmd)
 
-    # install web dependencies if web-enabled
-    bind_web_address = platform_cfg.get("bind-web-address", None)
-    if bind_web_address is not None:
-        print(f"Platform bind web address set to: {bind_web_address}")
-        from requirements import extras_require as extras
 
-        web_plt_pack = extras.get("web", None)
-        install_cmd = ["pip3", "install"]
-        install_cmd.extend(web_plt_pack)
-        if install_cmd is not None:
-            print(f"Installing packages for web platform: {web_plt_pack}")
-            subprocess.check_call(install_cmd)
+def _install_web_deps(bind_web_address):
+    print(f"Platform bind web address set to: {bind_web_address}")
+    from requirements import extras_require as extras
 
-    # Create the main volttron config file
-    if not os.path.isdir(VOLTTRON_HOME):
-        os.makedirs(VOLTTRON_HOME)
+    web_plt_pack = extras.get("web", None)
+    install_cmd = ["pip3", "install"]
+    install_cmd.extend(web_plt_pack)
+    if install_cmd is not None:
+        print(f"Installing packages for web platform: {web_plt_pack}")
+        subprocess.check_call(install_cmd)
 
-    cfg_path = os.path.join(VOLTTRON_HOME, "config")
-    if not os.path.exists(cfg_path):
-        if len(platform_cfg) > 0:
-            with open(os.path.join(cfg_path), "w") as fout:
-                fout.write("[volttron]\n")
-                for key, value in platform_cfg.items():
-                    fout.write("{}={}\n".format(key.strip(), value.strip()))
 
+def _create_platform_config_file(platform_cfg, cfg_path):
+    if not os.path.exists(cfg_path) and len(platform_cfg) > 0:
+        with open(os.path.join(cfg_path), "w") as fout:
+            fout.write("[volttron]\n")
+            for key, value in platform_cfg.items():
+                fout.write("{}={}\n".format(key.strip(), value.strip()))
+
+
+def _create_certs(cfg_path, platform_cfg):
     print("Creating CA Certificate...")
     crts = certs.Certs()
     data = {
@@ -116,6 +114,7 @@ def configure_platform(platform_cfg):
         ca_name=crts.root_ca_name,
         fqdn=get_hostname(),
     )
+
     master_web_cert = os.path.join(
         VOLTTRON_HOME, "certificates/certs/", name + "-server.crt"
     )
@@ -126,6 +125,29 @@ def configure_platform(platform_cfg):
     with open(os.path.join(cfg_path), "a") as fout:
         fout.write(f"web-ssl-cert = {master_web_cert}\n")
         fout.write(f"web-ssl-key = {master_web_key}\n")
+
+
+def configure_platform(platform_cfg):
+    # install required dependencies (this is temporary due to setup.py of volttron)
+    _install_required_deps()
+
+    # install web dependencies if web-enabled
+    bind_web_address = platform_cfg.get("bind-web-address", None)
+    if bind_web_address is not None:
+        print(f"Platform bind web address set to: {bind_web_address}")
+        _install_web_deps(bind_web_address)
+
+    # Create the main volttron config file
+    if not os.path.isdir(VOLTTRON_HOME):
+        os.makedirs(VOLTTRON_HOME)
+
+    cfg_path = os.path.join(VOLTTRON_HOME, "config")
+
+    # create platform config file
+    _create_platform_config_file(platform_cfg, cfg_path)
+
+    # create the certs
+    _create_certs(cfg_path, platform_cfg)
 
 
 def install_agents(agents):
@@ -173,7 +195,9 @@ def install_agents(agents):
             agent_source = os.path.expandvars(os.path.expanduser(spec["source"]))
 
             if not os.path.exists(agent_source):
-                slogger.info(f"Invalid agent source {agent_source} for identity {identity}")
+                slogger.info(
+                    f"Invalid agent source {agent_source} for identity {identity}"
+                )
                 sys.stderr.write(
                     "Invalid agent source ({}) for agent id identity: {}\n".format(
                         agent_source, identity
@@ -210,7 +234,9 @@ def install_agents(agents):
                 sys.stdout.write("Processing config_store entries")
                 for key, entry in spec["config_store"].items():
                     if "file" not in entry or not entry["file"]:
-                        slogger.info(f"Invalid config store entry; file must be specified for {key}")
+                        slogger.info(
+                            f"Invalid config store entry; file must be specified for {key}"
+                        )
                         sys.stderr.write(
                             "Invalid config store entry file must be specified for {}".format(
                                 key
@@ -220,7 +246,9 @@ def install_agents(agents):
                     entry_file = os.path.expandvars(os.path.expanduser(entry["file"]))
 
                     if not os.path.exists(entry_file):
-                        slogger.info(f"Invalid config store file not exist: {entry_file}")
+                        slogger.info(
+                            f"Invalid config store file not exist: {entry_file}"
+                        )
                         sys.stderr.write(
                             "Invalid config store file does not exist {}".format(
                                 entry_file
@@ -260,8 +288,10 @@ def final_platform_configurations():
 
 if __name__ == "__main__":
     set_home(VOLTTRON_HOME)
-    platform_config_path = get_platform_config_path()
-    config, agents, platform_cfg = get_platform_configurations(platform_config_path)
-    configure_platform(platform_cfg)
-    install_agents(agents)
+    platform_config_path_tmp = get_platform_config_path()
+    config_tmp, agents_tmp, platform_cfg_tmp = get_platform_configurations(
+        platform_config_path_tmp
+    )
+    configure_platform(platform_cfg_tmp)
+    install_agents(agents_tmp)
     final_platform_configurations()
