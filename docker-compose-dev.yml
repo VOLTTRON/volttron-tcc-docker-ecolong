@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   building1:
-    image: eclipsevolttron/volttron:v-tcc-ecolong-latest
+    image: eclipsevolttron/volttron:v-tcc-ecolong-dev-latest
     depends_on:
       - central
     container_name: building1
@@ -28,7 +28,7 @@ services:
       - ./core:/startup
 
   smalloffice:
-    image: eclipsevolttron/volttron:v-tcc-ecolong-latest
+    image: eclipsevolttron/volttron:v-tcc-ecolong-dev-latest
     depends_on:
       - central
     container_name: smalloffice
@@ -54,7 +54,7 @@ services:
       - ./core:/startup
 
   largeoffice:
-    image: eclipsevolttron/volttron:v-tcc-ecolong-latest
+    image: eclipsevolttron/volttron:v-tcc-ecolong-dev-latest
     depends_on:
       - central
     container_name: largeoffice
@@ -80,7 +80,7 @@ services:
       - ./core:/startup
 
   brsw:
-    image: eclipsevolttron/volttron:v-tcc-ecolong-latest
+    image: eclipsevolttron/volttron:v-tcc-ecolong-dev-latest
     depends_on:
       - central
     container_name: brsw
@@ -109,7 +109,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-dev
-    image: eclipsevolttron/volttron:v-tcc-ecolong-latest
+    image: eclipsevolttron/volttron:v-tcc-ecolong-dev-latest
     container_name: central
     hostname: central
     networks:
