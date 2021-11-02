@@ -1,6 +1,6 @@
 ARG image_user=amd64
 ARG image_repo=ubuntu
-ARG image_tag=focal
+ARG image_tag=bionic
 
 FROM ${image_user}/${image_repo}:${image_tag} as volttron_base
 
