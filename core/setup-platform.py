@@ -63,8 +63,8 @@ def _install_required_deps():
         package, options = req
         install_cmd = ["pip3", "install", "--no-deps"]
         if options:
-            install_cmd.append("--install-option")
-            install_cmd.extend(options)
+            for opt in options:
+                install_cmd.extend([f"--install-option", opt])
         install_cmd.append(package)
         subprocess.check_call(install_cmd)
 
