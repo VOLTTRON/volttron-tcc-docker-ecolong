@@ -12,12 +12,9 @@
 * Storage: 40 GB
 
 ## Git Submodules
-* The volttron submodule is pinned to [`develop`](https://github.com/VOLTTRON/volttron/tree/develop)
-* The volttron-GS submodule is pinned to [`main`](https://https://github.com/VOLTTRON/volttron-GS/tree/main)
-* Over time, the commits on the aforementioned submodules can change. To ensure that you get the latest commits for those submodules, run the following command: ```git submodule update --remote --merge``` This command will fetch the latest changes from upstream in each submodule, merge them in, and check out the latest revision of the submodule.
+* The volttron-GS submodule is pinned to [`this commit`](https://github.com/VOLTTRON/volttron-GS/tree/803db2ba25198d33e777c3a78d4c6a0a667bc653).
 
 ## Docker
-* The docker image uses Ubuntu 20.04 (focal) as the base image.
 * Logs for each container are stored in `log/`; Docker will mount log/ to store all log and database files.
   This may require one to change permissions on that directory: chmod -R 777 log
 * A pair of logs are created for each volttron instance. One log is dedicated to the platform configuration actions in core/setup-platform.py. That log is named <instance name>-<date>.log. It is stored in log/
@@ -28,9 +25,6 @@
 * All services defined in docker-compose.yml use the same image.
 
 # Quickstart
-
-NOTE: If you don't want to build the image locally, you can pull the image from DockerHub; run the following command: ```docker pull bonicim/volttron:tcc```
-This action is optional and is an alternative to the steps below.
 
 1. Initialize the submodules; for details see .gitmodules
 
@@ -139,25 +133,6 @@ grep-cmso
 ```shell
 # grep for campus topic sent from central forwarder
 grep-cmlo
-```
-
-
-# Development
-
-If you plan on extending or developing the "platform_config.yml", "configs/", or the setup scripts in "core/", build the Docker image, "Dockerfile-dev", only once using docker-compose -f docker-compose-dev.yml build --no-cache volttron1. Then start the container using docker-compose -f docker-compose-dev.yml up. When you want to make changes to "platform_config.yml", "configs/", or "core/", simply make the changes and then rerun your container. You do not have to rebuild the image every time you make changes to those aforementioned files and folders because they are mounted into the container. The only time you should rebuild the image is when you make changes to the "volttron" source code since that is not mounted to the container but rather baked into the image during the image build.
-
-To setup your environment for development, do the following:
-
-```shell
-# give execute permissions to all users
-chmod a+x core/*
-
-# build the development image (only have to do one time)
-docker-compose -f docker-compose-dev.yml build --no-cache volttron1
-
-# run the container
-# Volttron ZMQ
-docker-compose -f docker-compose-dev.yml up
 ```
 
 # Troubleshooting
