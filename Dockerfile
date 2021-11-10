@@ -1,5 +1,9 @@
 FROM eclipsevolttron/volttron:v2.0 as volttron_base
 
+# overwrite the base image's bootstart with our custom bootstart
+COPY ./core/bootstart.sh /startup/bootstart.sh
+RUN chmod +x /startup/*
+
 # Must ensure pip is upgraded or else scipy will not be installed
 RUN pip install --upgrade pip
 
