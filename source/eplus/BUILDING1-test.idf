@@ -17412,4 +17412,3 @@ Output:SQLite,
 !     SimpleAndTabular;        !- Option Type
 Output:Diagnostics,
     DisplayAllWarnings;      !- Key 1
-

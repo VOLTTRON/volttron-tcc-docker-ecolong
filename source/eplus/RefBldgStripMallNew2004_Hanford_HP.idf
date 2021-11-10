@@ -213,7 +213,7 @@
     Through: 12/31,          !- Field 1
     For: AllDays,            !- Field 2
     Until: 24:00,1;          !- Field 3
-    
+
   Schedule:Compact,
     ALWAYS_OFF,               !- Name
     On/Off,                  !- Schedule Type Limits Name
@@ -3478,7 +3478,7 @@
     ,                        !- Fan Power Ratio Function of Speed Ratio Curve Name
     ,                        !- Fan Efficiency Ratio Function of Speed Ratio Curve Name
     Unitary Fans;            !- End-Use Subcategory
-    
+
   Coil:Heating:DX:SingleSpeed,
     PSZ-AC_10:10_Unitary_Package_HeatCoil,  !- Name
     ALWAYS_ON,    !- Availability Schedule Name
@@ -3728,7 +3728,7 @@
     TIMED,                   !- Defrost Control
     0.166667,                !- Defrost Time Period Fraction
     20000;                   !- Resistive Defrost Heater Capacity {W}
-    
+
   Coil:Heating:Electric,
     PSZ-AC_10:10_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3737,7 +3737,7 @@
     PSZ-AC_10:10_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_10:10 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_10:10 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_1:1_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3746,7 +3746,7 @@
     PSZ-AC_1:1_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_1:1 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_1:1 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_2:2_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3755,7 +3755,7 @@
     PSZ-AC_2:2_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_2:2 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_2:2 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_3:3_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3764,7 +3764,7 @@
     PSZ-AC_3:3_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_3:3 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_3:3 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_4:4_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3773,7 +3773,7 @@
     PSZ-AC_4:4_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_4:4 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_4:4 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_5:5_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3782,7 +3782,7 @@
     PSZ-AC_5:5_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_5:5 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_5:5 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_6:6_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3791,7 +3791,7 @@
     PSZ-AC_6:6_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_6:6 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_6:6 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_7:7_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3800,7 +3800,7 @@
     PSZ-AC_7:7_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_7:7 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_7:7 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_8:8_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -3809,7 +3809,7 @@
     PSZ-AC_8:8_Unitary_PackageAuxCoil air inlet,  !- Air Inlet Node Name
     PSZ-AC_8:8 Supply Equipment Outlet Node,  !- Air Outlet Node Name
     PSZ-AC_8:8 Supply Equipment Outlet Node;  !- Temperature Setpoint Node Name
-    
+
   Coil:Heating:Electric,
     PSZ-AC_9:9_Unitary_Package_AuxCoil,  !- Name
     ALWAYS_ON,               !- Availability Schedule Name
@@ -5373,8 +5373,8 @@
     0,                       !- Coefficient3 x**2
     0.0,                     !- Minimum Value of x
     1.0;                     !- Maximum Value of x
-    
-    
+
+
   Curve:Biquadratic,
     HPACCoolCapFT,           !- Name
     0.766956,                !- Coefficient1 Constant
@@ -7011,7 +7011,7 @@
     Until: 08:00,0.0,        !- Field 17
     Until: 19:00,1.0,        !- Field 19
     Until: 24:00,0.0;        !- Field 21
-    
+
 
 ! ***GENERAL REPORTING***
 
@@ -7079,7 +7079,7 @@
     FanRuntimeFraction2,                      !- Name
     PSZ-AC_2:2_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
     Fan Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     FanRuntimeFraction3,                      !- Name
     PSZ-AC_3:3_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
@@ -7099,17 +7099,17 @@
     FanRuntimeFraction6,                      !- Name
     PSZ-AC_6:6_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
     Fan Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     FanRuntimeFraction7,                      !- Name
     PSZ-AC_7:7_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
     Fan Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     FanRuntimeFraction8,                      !- Name
     PSZ-AC_8:8_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
     Fan Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     FanRuntimeFraction9,                      !- Name
     PSZ-AC_9:9_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
@@ -7124,7 +7124,7 @@
     FanRuntimeFraction11,                      !- Name
     PSZ-AC_10:10_Unitary_Package_fan,          !- Output:Variable or Output:Meter Index Key Name
     Fan Runtime Fraction;  !- Output:Variable or Output:Meter Name
-        
+
   EnergyManagementSystem:Sensor,
     CoolingCoilRuntimeFraction1,                      !- Name
     PSZ-AC_1:1_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7134,7 +7134,7 @@
     CoolingCoilRuntimeFraction2,                      !- Name
     PSZ-AC_2:2_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
     Cooling Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     CoolingCoilRuntimeFraction3,                      !- Name
     PSZ-AC_3:3_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7154,17 +7154,17 @@
     CoolingCoilRuntimeFraction6,                      !- Name
     PSZ-AC_6:6_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
     Cooling Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     CoolingCoilRuntimeFraction7,                      !- Name
     PSZ-AC_7:7_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
     Cooling Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     CoolingCoilRuntimeFraction8,                      !- Name
     PSZ-AC_8:8_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
     Cooling Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     CoolingCoilRuntimeFraction9,                      !- Name
     PSZ-AC_9:9_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7179,7 +7179,7 @@
     CoolingCoilRuntimeFraction11,                      !- Name
     PSZ-AC_10:10_Unitary_Package_CoolCoil,          !- Output:Variable or Output:Meter Index Key Name
     Cooling Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     HeatingCoilRuntimeFraction1,                      !- Name
     PSZ-AC_1:1_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7189,7 +7189,7 @@
     HeatingCoilRuntimeFraction2,                      !- Name
     PSZ-AC_2:2_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
     Heating Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     HeatingCoilRuntimeFraction3,                      !- Name
     PSZ-AC_3:3_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7209,17 +7209,17 @@
     HeatingCoilRuntimeFraction6,                      !- Name
     PSZ-AC_6:6_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
     Heating Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     HeatingCoilRuntimeFraction7,                      !- Name
     PSZ-AC_7:7_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
     Heating Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     HeatingCoilRuntimeFraction8,                      !- Name
     PSZ-AC_8:8_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
     Heating Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     HeatingCoilRuntimeFraction9,                      !- Name
     PSZ-AC_9:9_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
@@ -7234,7 +7234,7 @@
     HeatingCoilRuntimeFraction11,                      !- Name
     PSZ-AC_10:10_Unitary_Package_HeatCoil,          !- Output:Variable or Output:Meter Index Key Name
     Heating Coil Runtime Fraction;  !- Output:Variable or Output:Meter Name
-    
+
   EnergyManagementSystem:Sensor,
     ZoneTemp1,                      !- Name
     LGstore1,          !- Output:Variable or Output:Meter Index Key Name
@@ -7289,7 +7289,7 @@
     ZoneTemp11,                      !- Name
     SMstore8,          !- Output:Variable or Output:Meter Index Key Name
     Zone Mean Air Temperature;  !- Output:Variable or Output:Meter Name
-        
+
   EnergyManagementSystem:Sensor,
     SystemAvailability,                      !- Name
     HVACOperationSchd,          !- Output:Variable or Output:Meter Index Key Name
@@ -7302,7 +7302,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     FanStatus2,  !- Name
     FanStatus2,          !- EMS Variable Name
@@ -7318,7 +7318,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     FanStatus4,  !- Name
     FanStatus4,          !- EMS Variable Name
@@ -7326,7 +7326,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     FanStatus5,  !- Name
     FanStatus5,          !- EMS Variable Name
@@ -7382,7 +7382,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-        
+
   EnergyManagementSystem:OutputVariable,
     CompressorStatus1,  !- Name
     CompressorStatus1,          !- EMS Variable Name
@@ -7390,7 +7390,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     CompressorStatus2,  !- Name
     CompressorStatus2,          !- EMS Variable Name
@@ -7406,7 +7406,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     CompressorStatus4,  !- Name
     CompressorStatus4,          !- EMS Variable Name
@@ -7414,7 +7414,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     CompressorStatus5,  !- Name
     CompressorStatus5,          !- EMS Variable Name
@@ -7470,7 +7470,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-        
+
   EnergyManagementSystem:OutputVariable,
     AuxHeatStatus1,  !- Name
     AuxHeatStatus1,          !- EMS Variable Name
@@ -7478,7 +7478,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     AuxHeatStatus2,  !- Name
     AuxHeatStatus2,          !- EMS Variable Name
@@ -7494,7 +7494,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     AuxHeatStatus4,  !- Name
     AuxHeatStatus4,          !- EMS Variable Name
@@ -7502,7 +7502,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     AuxHeatStatus5,  !- Name
     AuxHeatStatus5,          !- EMS Variable Name
@@ -7558,7 +7558,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-        
+
   EnergyManagementSystem:OutputVariable,
     HeatingCoolingMode1,  !- Name
     HeatingCoolingMode1,          !- EMS Variable Name
@@ -7566,7 +7566,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     HeatingCoolingMode2,  !- Name
     HeatingCoolingMode2,          !- EMS Variable Name
@@ -7582,7 +7582,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     HeatingCoolingMode4,  !- Name
     HeatingCoolingMode4,          !- EMS Variable Name
@@ -7590,7 +7590,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     HeatingCoolingMode5,  !- Name
     HeatingCoolingMode5,          !- EMS Variable Name
@@ -7646,7 +7646,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-        
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode1,  !- Name
     OccupancyMode1,          !- EMS Variable Name
@@ -7654,7 +7654,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode2,  !- Name
     OccupancyMode2,          !- EMS Variable Name
@@ -7662,7 +7662,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode3,  !- Name
     OccupancyMode3,          !- EMS Variable Name
@@ -7670,7 +7670,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode4,  !- Name
     OccupancyMode4,          !- EMS Variable Name
@@ -7678,7 +7678,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode5,  !- Name
     OccupancyMode5,          !- EMS Variable Name
@@ -7686,7 +7686,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode6,  !- Name
     OccupancyMode6,          !- EMS Variable Name
@@ -7694,7 +7694,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode7,  !- Name
     OccupancyMode7,          !- EMS Variable Name
@@ -7702,7 +7702,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode8,  !- Name
     OccupancyMode8,          !- EMS Variable Name
@@ -7710,7 +7710,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode9,  !- Name
     OccupancyMode9,          !- EMS Variable Name
@@ -7718,7 +7718,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode10,  !- Name
     OccupancyMode10,          !- EMS Variable Name
@@ -7726,7 +7726,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OccupancyMode11,  !- Name
     OccupancyMode11,          !- EMS Variable Name
@@ -7742,7 +7742,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature2,  !- Name
     OutdoorDrybulbTemperature2,          !- EMS Variable Name
@@ -7750,7 +7750,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature3,  !- Name
     OutdoorDrybulbTemperature3,          !- EMS Variable Name
@@ -7758,7 +7758,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature4,  !- Name
     OutdoorDrybulbTemperature4,          !- EMS Variable Name
@@ -7766,7 +7766,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature5,  !- Name
     OutdoorDrybulbTemperature5,          !- EMS Variable Name
@@ -7774,7 +7774,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature6,  !- Name
     OutdoorDrybulbTemperature6,          !- EMS Variable Name
@@ -7782,7 +7782,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature7,  !- Name
     OutdoorDrybulbTemperature7,          !- EMS Variable Name
@@ -7790,7 +7790,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature8,  !- Name
     OutdoorDrybulbTemperature8,          !- EMS Variable Name
@@ -7798,7 +7798,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature9,  !- Name
     OutdoorDrybulbTemperature9,          !- EMS Variable Name
@@ -7806,7 +7806,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature10,  !- Name
     OutdoorDrybulbTemperature10,          !- EMS Variable Name
@@ -7814,7 +7814,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     OutdoorDrybulbTemperature11,  !- Name
     OutdoorDrybulbTemperature11,          !- EMS Variable Name
@@ -7830,7 +7830,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature2,  !- Name
     ZoneAirTemperature2,          !- EMS Variable Name
@@ -7838,7 +7838,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature3,  !- Name
     ZoneAirTemperature3,          !- EMS Variable Name
@@ -7846,7 +7846,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature4,  !- Name
     ZoneAirTemperature4,          !- EMS Variable Name
@@ -7854,7 +7854,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature5,  !- Name
     ZoneAirTemperature5,          !- EMS Variable Name
@@ -7862,7 +7862,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature6,  !- Name
     ZoneAirTemperature6,          !- EMS Variable Name
@@ -7870,7 +7870,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature7,  !- Name
     ZoneAirTemperature7,          !- EMS Variable Name
@@ -7878,7 +7878,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature8,  !- Name
     ZoneAirTemperature8,          !- EMS Variable Name
@@ -7886,7 +7886,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature9,  !- Name
     ZoneAirTemperature9,          !- EMS Variable Name
@@ -7894,7 +7894,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature10,  !- Name
     ZoneAirTemperature10,          !- EMS Variable Name
@@ -7902,7 +7902,7 @@
     ZoneTimeStep,            !- Update Frequency
     ,                        !- EMS Program or Subroutine Name
     ;                        !- Units
-    
+
   EnergyManagementSystem:OutputVariable,
     ZoneAirTemperature11,  !- Name
     ZoneAirTemperature11,          !- EMS Variable Name
@@ -7943,7 +7943,7 @@
 
   EnergyManagementSystem:GlobalVariable,
     FanStatus11;          !- Name
-        
+
   EnergyManagementSystem:GlobalVariable,
     CompressorStatus1;          !- Name
 
@@ -7976,7 +7976,7 @@
 
   EnergyManagementSystem:GlobalVariable,
     CompressorStatus11;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     AuxHeatStatus1;          !- Name
 
@@ -8009,7 +8009,7 @@
 
   EnergyManagementSystem:GlobalVariable,
     AuxHeatStatus11;          !- Name
-        
+
   EnergyManagementSystem:GlobalVariable,
     HeatingCoolingMode1;          !- Name
 
@@ -8039,10 +8039,10 @@
 
   EnergyManagementSystem:GlobalVariable,
     HeatingCoolingMode10;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     HeatingCoolingMode11;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     OccupancyMode1;          !- Name
 
@@ -8072,10 +8072,10 @@
 
   EnergyManagementSystem:GlobalVariable,
     OccupancyMode10;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     OccupancyMode11;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     OutdoorDrybulbTemperature1;          !- Name
 
@@ -8105,10 +8105,10 @@
 
   EnergyManagementSystem:GlobalVariable,
     OutdoorDrybulbTemperature10;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     OutdoorDrybulbTemperature11;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     ZoneAirTemperature1;          !- Name
 
@@ -8138,10 +8138,10 @@
 
   EnergyManagementSystem:GlobalVariable,
     ZoneAirTemperature10;          !- Name
-    
+
   EnergyManagementSystem:GlobalVariable,
     ZoneAirTemperature11;          !- Name
-    
+
   EnergyManagementSystem:ProgramCallingManager,
     System Mode Reporter,  !- Name
     EndOfZoneTimestepBeforeZoneReporting,  !- EnergyPlus Model Calling Point
@@ -8226,7 +8226,7 @@
     SET ZoneAirTemperature9 = ZoneTemp9,
     SET ZoneAirTemperature10 = ZoneTemp10,
     SET ZoneAirTemperature11 = ZoneTemp11;
-    
+
   ExternalInterface,
     PtolemyServer;           !- Name of External Interface
 
@@ -8279,12 +8279,12 @@
     CLGSETP_SCH_10, !- Name
     Temperature,             !- Schedule Type Limits Name
     23.33;                   !- Initial Value
-    
+
   ExternalInterface:Schedule,
     CLGSETP_SCH_11, !- Name
     Temperature,             !- Schedule Type Limits Name
     23.33;                   !- Initial Value
-    
+
   ExternalInterface:Schedule,
     HTGSETP_SCH_1, !- Name
     Temperature,             !- Schedule Type Limits Name
@@ -8334,7 +8334,7 @@
     HTGSETP_SCH_10, !- Name
     Temperature,             !- Schedule Type Limits Name
     20.00;                   !- Initial Value
-    
+
   ExternalInterface:Schedule,
     HTGSETP_SCH_11, !- Name
     Temperature,             !- Schedule Type Limits Name
@@ -8346,7 +8346,7 @@
     Verbose;                 !- EMS Runtime Language Debug Output Level
 
   Output:VariableDictionary,IDF,Unsorted;
-  
+
   Output:Variable,Whole Building,Facility Total HVAC Electric Demand Power,timestep; !- HVAC Average [W]
   Output:Variable,EMS,ZoneAirTemperature1,timestep;
   Output:Variable,EMS,ZoneAirTemperature2,timestep;
@@ -8425,12 +8425,12 @@
   Output:Variable,EMS,OccupancyMode9,timestep;
   Output:Variable,EMS,OccupancyMode10,timestep;
   Output:Variable,EMS,OccupancyMode11,timestep;
-  Output:Variable,*,Zone Thermostat Cooling Setpoint Temperature,Timestep;  
-  Output:Variable,*,Zone Thermostat Heating Setpoint Temperature,Timestep; 
+  Output:Variable,*,Zone Thermostat Cooling Setpoint Temperature,Timestep;
+  Output:Variable,*,Zone Thermostat Heating Setpoint Temperature,Timestep;
 
 OutputControl:Table:Style,
   HTML;                    !- Column Separator
- 
+
 Output:Table:SummaryReports,
   AnnualBuildingUtilityPerformanceSummary,  !- Report 1 Name
   InputVerificationandResultsSummary,  !- Report 2 Name

@@ -45,8 +45,7 @@ elif [[ $(hostname) == "brsw" ]]; then
   echo "alias vrestart='vctl start --tag rtu tns* market-service sqlite-db forwarder listener'"
   } >> "$VOLTTRON_USER_HOME/.bash_aliases"
 elif [[ $(hostname) == "building1" ]]; then
-  
-  { 
+  {
   echo "alias grep-cmb1='cat $VOLTTRON_USER_HOME/logs/$(hostname).volttron.log | grep tnc/campus/BUILDING1 -a'"
   echo "alias vrestart='vctl start --tag vav ahu light uncontrol_load tns* market-service sqlite-db forwarder listener'"
   } >> "$VOLTTRON_USER_HOME/.bash_aliases"
@@ -63,6 +62,8 @@ elif [[ $(hostname) == "largeoffice" ]]; then
 fi
 
 echo "Starting Volttron for container: $(hostname)"
+# the command below will ensure that logs are written and persisted; these logs will persist in a folder on the host machine
+# thus ensuring that logs will not be lost when the container is removed
 volttron -vv -l /home/volttron/logs/$(hostname).volttron.log > /dev/null 2>&1 &
 disown
 sleep 10

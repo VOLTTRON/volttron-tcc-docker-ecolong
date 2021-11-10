@@ -10034,4 +10034,3 @@ Output:PreprocessorMessage,
     Warning,                 !- Error Severity
     Chiller:Electric:ReformulatedEIR="CoolSys1 Chiller 2",  !- Message Line 1
     defaults for this object have changed. See InputOutputReference document for details.;  !- Message Line 2
-

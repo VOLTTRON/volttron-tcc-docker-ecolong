@@ -304,7 +304,17 @@ agents:
     config: $CONFIG/forwarder.config
     tag: forwarder
 
-  volttron.central:
-    source: $VOLTTRON_ROOT/services/core/VolttronCentral
-    config: $VOLTTRON_ROOT/services/core/VolttronCentral/config
-    tag: central
+  platform.driver:
+    source: $VOLTTRON_ROOT/services/core/PlatformDriverAgent
+    config_store:
+      fake.csv:
+        file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.csv
+        type: --csv
+      devices/fake-campus/fake-building/fake-device:
+        file: $VOLTTRON_ROOT/examples/configurations/drivers/fake.config
+    tag: driver
+
+  platform.agent:
+    source: $VOLTTRON_ROOT/services/core/VolttronCentralPlatform
+    config: $CONFIG/vcp.config
+    tag: vcp
