@@ -1,6 +1,6 @@
 version: '3.4'
 
-# extension fields to make this yaml DRY; see https://docs.docker.com/compose/compose-file/compose-file-v3/#extension-fields
+# extension fields to make this YAML DRY; see https://docs.docker.com/compose/compose-file/compose-file-v3/#extension-fields
 x-volttron: &default-depends
   depends_on:
     - central
@@ -13,6 +13,7 @@ x-env: &default-env
     - CONFIG=/home/volttron/configs
     - LOCAL_USER_ID=1000
     - LOG_PREFIX=volttron-log-setup
+
 
 services:
   building1:
@@ -35,7 +36,6 @@ services:
       - ./platform_configs/building1/building1_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - building1-volume:/home/volttron/db
 
   smalloffice:
     <<: *default-depends
@@ -57,7 +57,6 @@ services:
       - ./platform_configs/smalloffice/smalloffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - smalloffice-volume:/home/volttron/db/
 
   largeoffice:
     <<: *default-depends
@@ -79,7 +78,6 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - smalloffice-volume:/home/volttron/db/
 
   brsw:
     <<: *default-depends
@@ -101,7 +99,6 @@ services:
       - ./platform_configs/brsw/brsw_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - brsw-volume:/home/volttron/db/
 
   central:
     build: .
@@ -123,7 +120,6 @@ services:
       - ./platform_configs/central/central_platform_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - central-volume:/home/volttron/db
 
 networks:
   tcc_network:
@@ -133,15 +129,3 @@ networks:
      config:
        - subnet: 172.28.0.0/16
          ip_range: 172.28.5.0/24
-
-volumes:
-  building1-volume:
-    name: building1-data
-  smalloffice-volume:
-    name: smalloffice-data
-  largeoffice-volume:
-    name: largeoffice-data
-  brsw-volume:
-    name: brsw-data
-  central-volume:
-    name: central-data

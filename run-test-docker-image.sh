@@ -53,7 +53,7 @@ else
   echo "Building image: ${image_name}"
   git submodule update --init --recursive
   docker rmi "${image_name}" --force
-  docker build --no-cache -t "${image_name}" .
+  docker build --no-cache --force-rm -t "${image_name}" .
 fi
 
 ###### Test that the image was built

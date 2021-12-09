@@ -135,6 +135,13 @@ grep-cmso
 grep-cmlo
 ```
 
+## Database persistence
+
+All containers except 'central' have an sqlite database, which is used by the SQLHistorian agent.
+
+
+https://docs.docker.com/get-started/05_persisting_data/
+
 # Troubleshooting
 
 *My VC Platform agent can't connect to the Volttron Central address. I see `volttron.platform.vip.agent.subsystems.auth ERROR: Couldn't connect to https://localhost:8443 or incorrect response returned response was None` in the logs*
