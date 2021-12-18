@@ -2,3 +2,10 @@
 logs/
 *__pycache__/
 db/
+source/eplus/eplusout*
+source/eplus/eplusssz.csv
+source/eplus/epluszsz.csv
+source/eplus/socket.cfg
+source/eplus/sqlite.err
+source/eplus/utilSocket.log
+source/eplus/variables.cfg

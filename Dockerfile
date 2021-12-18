@@ -28,7 +28,6 @@ RUN echo "source ~/.bash_aliases" >> "$VOLTTRON_USER_HOME/.bashrc"
 
 COPY --chown=volttron:volttron volttron-GS/pnnl /code/volttron/volttron/pnnl
 COPY --chown=volttron:volttron volttron-GS/eplus /code/volttron/volttron/pnnl
-COPY --chown=volttron:volttron source/eplus /code/volttron/volttron/eplus
 
 COPY --chown=volttron:volttron volttron-GS/MarketAgents /code/volttron/volttron/MarketAgents
 COPY --chown=volttron:volttron volttron-GS/MixMarketServiceAgent /code/volttron/volttron/MixMarketServiceAgent

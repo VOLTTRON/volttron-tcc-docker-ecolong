@@ -36,6 +36,7 @@ services:
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
       - building1-volume:/home/volttron/db
+      - ./source/eplus:/code/volttron/volttron/eplus
 
   smalloffice:
     <<: *default-depends
@@ -58,6 +59,7 @@ services:
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
       - smalloffice-volume:/home/volttron/db/
+      - ./source/eplus:/code/volttron/volttron/eplus
 
   largeoffice:
     <<: *default-depends
@@ -79,7 +81,8 @@ services:
       - ./platform_configs/largeoffice/largeoffice_config.yml:/platform_config.yml
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
-      - smalloffice-volume:/home/volttron/db/
+      - largeoffice-volume:/home/volttron/db/
+      - ./source/eplus:/code/volttron/volttron/eplus
 
   brsw:
     <<: *default-depends
@@ -102,6 +105,7 @@ services:
       - ./source/bcvtb:/code/volttron/bcvtb
       - ./logs:/home/volttron/logs
       - brsw-volume:/home/volttron/db/
+      - ./source/eplus:/code/volttron/volttron/eplus
 
   central:
     build: .
