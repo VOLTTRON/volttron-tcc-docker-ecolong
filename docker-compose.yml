@@ -106,7 +106,7 @@ services:
       - ./logs:/home/volttron/logs
       - brsw-volume:/home/volttron/db/
       - ./source/eplus/brsw:/home/volttron/brsw
-      
+
   central:
     build: .
     <<: *default-image
