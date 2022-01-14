@@ -9,3 +9,14 @@ source/eplus/socket.cfg
 source/eplus/sqlite.err
 source/eplus/utilSocket.log
 source/eplus/variables.cfg
+*.sqlite
+*eplusout.*
+*eplusssz*
+*eplustbl*
+*epluszsz*
+sqlite.err
+utilSocket.log
+socket.cfg
+variables.cfg
+*.zip
+*eplusmtr*
