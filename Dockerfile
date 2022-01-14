@@ -1,4 +1,4 @@
-FROM eclipsevolttron/volttron:v8.1.3 as volttron_base
+FROM eclipsevolttron/volttron:v3.1 as volttron_base
 
 # overwrite the base image's bootstart with our custom bootstart
 COPY ./core/bootstart.sh /startup/bootstart.sh
