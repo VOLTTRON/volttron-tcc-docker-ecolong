@@ -3,6 +3,11 @@
 * Docker version 20.10.5, build 55c4c88
 * docker-compose version 1.28.5, build c4eb3a1f
 
+* You can install the docker and docker-compose by the following command.
+```
+sh scripts/build.sh
+```
+
 # Notes
 
 ## Recommendations on running this Docker image on a Virtual Machine
